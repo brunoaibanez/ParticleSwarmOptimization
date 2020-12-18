@@ -19,9 +19,17 @@ void MainProgram::setNumberOfParticles(int numberOfParticles){
 
         this->particles.push_back(p);
         this->particlesFirstIteration.push_back(pcopy);
-        std::cout << this->particles.at(i)->qpoint.y() << "      " << this->particles.at(i)->qpoint.ry() << std::endl;
-
     }
+}
+
+void MainProgram::updatePointsPositions(){
+
+    for (int i = 0; i < this->particles.size(); i++)
+    {
+        Particle * p = this->particles.at(i);
+        p->updatePosition();
+    }
+
 }
 
 QPixmap MainProgram::refreshWindow(){
@@ -31,7 +39,6 @@ QPixmap MainProgram::refreshWindow(){
     for (int i = 0; i < this->particles.size(); i++) // access by reference to avoid copying
     {
         Particle * p = this->particles.at(i);
-        p->updatePosition();
         this->paintPoint(&q,p);
     }
 
@@ -52,6 +59,7 @@ void MainProgram::paintPoint(QPixmap * q, Particle * particle){
     painter->drawText(qpos,qs);
     delete painter;
 }
+
 
 void MainProgram::restartPoints(){
     this->particles.clear();

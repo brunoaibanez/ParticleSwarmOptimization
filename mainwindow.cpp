@@ -11,11 +11,17 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->mainProgram = MainProgram();
-    this->notstarted = true;
     this->mainProgram.setNumberOfParticles(ui->numberOfParticles->value());
 
     QPixmap q = this->mainProgram.refreshWindow();
     ui->labelGrid->setPixmap(q);
+
+    this->started = false;
+
+    QTimer *timer = new QTimer(this);
+    this->mytimer = timer;
+    connect(timer, SIGNAL(timeout()), this, SLOT(on_startButton_clicked()));
+
 
 }
 
@@ -37,29 +43,31 @@ void MainWindow::on_startButton_clicked()
 
     int w = ui->labelGrid->width();
     int h = ui->labelGrid->height();
+    this->mainProgram.updatePointsPositions();
     QPixmap q = this->mainProgram.refreshWindow();
     ui->labelGrid->setPixmap(q);
 
-    if (notstarted){
-        QTimer *timer = new QTimer(this);
-        this->mytimer = timer;
-
-        connect(timer, SIGNAL(timeout()), this, SLOT(on_startButton_clicked()));
-        timer->start(1000);
-        notstarted = false;
+    if (!this->started){
+        this->mytimer->start(1000);
+        started = true;
     }
 }
 
 void MainWindow::on_stopButton_clicked()
 {
-    this->mytimer->stop();
-    notstarted = true;
+    if(started){
+        this->mytimer->stop();
+        started = false;
+    }
+
 }
 
 void MainWindow::on_restartButton_clicked()
 {
-    this->mytimer->stop();
-    notstarted = true;
+    if(started){
+        this->mytimer->stop();
+        started = false;
+    }
     this->mainProgram.restartPoints();
 
     QPixmap q = this->mainProgram.refreshWindow();
@@ -68,8 +76,11 @@ void MainWindow::on_restartButton_clicked()
 
 void MainWindow::on_numberOfParticles_valueChanged(int arg1)
 {
-    this->mytimer->stop();
-    notstarted = true;
+    if(started){
+        this->mytimer->stop();
+        started = false;
+    }
+
     this->mainProgram.setNumberOfParticles(arg1);
 
     QPixmap q = this->mainProgram.refreshWindow();

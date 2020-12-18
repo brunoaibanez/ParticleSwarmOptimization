@@ -4,7 +4,7 @@
 
 Particle::Particle(int x, int y, int vx, int vy)
 {
-    this->qpoint = QPoint(x,y);
+    this->qpoint = QPoint(x % WindowConstants::WIDTH, y % WindowConstants::HEIGHT);
     this->qvelocity = QPoint(vx,vy);
 }
 

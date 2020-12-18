@@ -20,7 +20,7 @@ public:
     void setMainProgram(MainProgram * m);
     void showParticles();
     QTimer * mytimer;
-    bool notstarted;
+    bool started;
 
 private slots:
 

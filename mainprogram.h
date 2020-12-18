@@ -15,6 +15,7 @@ public:
     void paintPoint(QPixmap * q, Particle * particle);
     void restartPoints();
     void setNumberOfParticles(int numberOfParticles);
+    void updatePointsPositions();
     std::vector <Particle *> particles;
     std::vector <Particle *> particlesFirstIteration;
 
