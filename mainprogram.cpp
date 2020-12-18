@@ -34,9 +34,12 @@ void MainProgram::paintPoint(QPixmap * q, Particle * particle){
     QPainter *painter = new QPainter(q);
     QPen linepen(Qt::red);
     linepen.setCapStyle(Qt::RoundCap);
-    linepen.setWidth(10);
+    linepen.setWidth(5);
     painter->setRenderHint(QPainter::Antialiasing,true);
     painter->setPen(linepen);
     painter->drawPoint(particle->qpoint);
+    QString qs = QString::number(particle->qvelocity.x()) + " , " + QString::number(particle->qvelocity.y());
+    QPoint qpos = particle->qpoint + QPoint(5,5);
+    painter->drawText(qpos,qs);
     delete painter;
 }

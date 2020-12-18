@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <iostream>
 #include "mainprogram.h"
+#include <QTimer>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -21,13 +22,6 @@ MainWindow::~MainWindow()
 }
 
 
-/*
-void MainWindow::setMainProgram(MainProgram * m){
-    std::cout << m->particles.at(0)->qpoint.x() << std::endl;
-    this->mainProgram = m;
-    std::cout << this->mainProgram->particles.at(0)->qpoint.x() << std::endl;
-}
-*/
 void MainWindow::showParticles(){
 
 }
