@@ -13,7 +13,11 @@ public:
     MainProgram();
     QPixmap refreshWindow();
     void paintPoint(QPixmap * q, Particle * particle);
+    void restartPoints();
+    void setNumberOfParticles(int numberOfParticles);
     std::vector <Particle *> particles;
+    std::vector <Particle *> particlesFirstIteration;
+
 };
 
 #endif // MAINPROGRAM_H

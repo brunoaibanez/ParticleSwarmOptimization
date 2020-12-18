@@ -11,6 +11,5 @@ Particle::Particle(int x, int y, int vx, int vy)
 void Particle::updatePosition(){
     this->qpoint += this->qvelocity;
     this->qpoint.setX(this->qpoint.x() % WindowConstants::WIDTH);
-
     this->qpoint.setY(this->qpoint.y() % WindowConstants::HEIGHT);
 }

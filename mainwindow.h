@@ -19,11 +19,18 @@ public:
     MainProgram mainProgram;
     void setMainProgram(MainProgram * m);
     void showParticles();
+    QTimer * mytimer;
+    bool notstarted;
 
 private slots:
-    void on_pushButton_clicked();
 
-    void on_pushButton_2_pressed();
+    void on_startButton_clicked();
+
+    void on_stopButton_clicked();
+
+    void on_restartButton_clicked();
+
+    void on_numberOfParticles_valueChanged(int arg1);
 
 private:
     Ui::MainWindow *ui;
