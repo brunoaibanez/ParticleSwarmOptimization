@@ -16,6 +16,13 @@ namespace StringConstants
 
 }
 
+namespace ModelDefaultConstants
+{
+    const float defaultBestGlobalRes = 1;
+    const float defaultInercia1 = 1;
+    const float defaultInercia2 = 1;
+}
+
 class Constants
 {
 public:
