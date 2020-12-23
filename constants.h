@@ -1,6 +1,8 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
+#include <string>
+
 namespace WindowConstants
 {
     const int WIDTH = 600;
@@ -8,6 +10,11 @@ namespace WindowConstants
 
 }
 
+namespace StringConstants
+{
+    const std::string deJongFunction1 = "DeJongFunction1";
+
+}
 
 class Constants
 {
