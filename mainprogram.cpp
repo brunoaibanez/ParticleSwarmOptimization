@@ -6,6 +6,8 @@
 MainProgram::MainProgram()
 {
 
+    this->setPixmap();
+
 
 }
 
@@ -34,8 +36,7 @@ void MainProgram::updatePointsPositions(){
 }
 
 QPixmap MainProgram::refreshWindow(){
-    QPixmap q = QPixmap(WindowConstants::WIDTH, WindowConstants::HEIGHT);
-    q.fill(Qt::white);
+    QPixmap q = *this->qpixMap;
 
     for (int i = 0; i < this->particles.size(); i++) // access by reference to avoid copying
     {
@@ -65,7 +66,7 @@ void MainProgram::paintPoint(QPixmap * q, Particle * particle){
 
 void MainProgram::restartPoints(){
     this->particles.clear();
-    Particle::clearGlobalVariables();
+    //Particle::clearGlobalVariables();
     for (int i = 0; i < this->particlesFirstIteration.size(); i++){
         int posx = this->particlesFirstIteration[i]->qpoint.x();
         int posy = this->particlesFirstIteration[i]->qpoint.y();
@@ -75,4 +76,51 @@ void MainProgram::restartPoints(){
 
         this->particles.push_back(pcopy);
     }
+}
+
+void MainProgram::setPixmap(){
+    QPixmap* mappingPixmap = new QPixmap(WindowConstants::WIDTH, WindowConstants::HEIGHT);
+    std::vector<std::vector<float>> mappingMatrix;
+    float maxValue = 0;
+
+    for (int i = 0; i < WindowConstants::WIDTH; i++){
+        std::vector<float> aux;
+        mappingMatrix.push_back(aux);
+        for (int j = 0; j < WindowConstants::HEIGHT; j++){
+            int posx = i;
+            int posy = j;
+            int vx = 0;
+            int vy = 0;
+            Particle paux = Particle(posx, posy, vx, vy);
+
+            float value = paux.getOptimizationValue();
+            mappingMatrix.at(i).push_back(value);
+
+            if (value > maxValue){
+                maxValue = value;
+            }
+        }
+    }
+
+    QPainter *painter = new QPainter(mappingPixmap);
+
+    for (int i = 0; i < WindowConstants::WIDTH; i++){
+        for (int j = 0; j < WindowConstants::HEIGHT; j++){
+            float valueNormalized = mappingMatrix.at(i).at(j) / maxValue;
+            int valuePixel = int(valueNormalized * 255);
+
+            QPen linepen(QColor(valuePixel,valuePixel,valuePixel,valuePixel));
+            linepen.setCapStyle(Qt::RoundCap);
+            linepen.setWidth(1);
+            painter->setPen(linepen);
+            QPoint qpaintpoint = QPoint(i,j);
+            painter->drawPoint(qpaintpoint);
+
+        }
+    }
+
+    this->qpixMap = mappingPixmap;
+
+    delete painter;
+
 }

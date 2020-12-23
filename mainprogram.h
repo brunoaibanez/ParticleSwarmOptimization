@@ -16,8 +16,10 @@ public:
     void restartPoints();
     void setNumberOfParticles(int numberOfParticles);
     void updatePointsPositions();
+    void setPixmap();
     std::vector <Particle *> particles;
     std::vector <Particle *> particlesFirstIteration;
+    QPixmap * qpixMap;
 
 };
 

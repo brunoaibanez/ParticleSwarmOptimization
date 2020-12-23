@@ -48,7 +48,7 @@ void MainWindow::on_startButton_clicked()
     ui->labelGrid->setPixmap(q);
 
     if (!this->started){
-        this->mytimer->start(1000);
+        this->mytimer->start(50);
         started = true;
     }
 }
