@@ -35,7 +35,7 @@ void Particle::updatePosition(){
         this->qpoint.setY(0);
     }
 
-    //this->recomputeVelocity();
+    this->recomputeVelocity();
     this->qpoint = this->qpointnext;
     this->qvelocity = this->qvelocitynext;
 }
@@ -65,6 +65,22 @@ float Particle::optimizationFunctionDeJong1(){
     float res = pow(x,2) + pow(y,2);
 
     return res;
+}
+
+void Particle::recomputeVelocity(){
+   float r1 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+   float r2 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+   this->qvelocitynext = this->inerciaVelocity * this->qvelocity + Particle::inercia1 * r1 * (this->bestPosX - this->qpoint) + Particle::inercia2 * r2 * (this->bestGlobalPos - this->qpoint);
+   this->inerciaVelocity = this->inerciaVelocity * 0.8;
+}
+
+void Particle::checkIfBestGlobalPos(){
+    if (this->localRes < this->bestGlobalRes){
+        this->bestGlobalRes = this->localRes;
+        this->bestGlobalPos = this->qpoint;
+    }
+
 }
 
 
