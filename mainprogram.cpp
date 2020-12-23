@@ -17,12 +17,16 @@ void MainProgram::setNumberOfParticles(int numberOfParticles){
     this->particlesFirstIteration.clear();
     Particle::clearGlobalVariables();
     for (int i = 0; i<numberOfParticles; i++){
-        Particle* p = new Particle(i*100,i*100+50, 2*i+1, 3*i+1);
-        Particle* pcopy = new Particle(i*100,i*100+50, 2*i+1, 3*i+1);
+        //TODO put it random or something bro
+        Particle* p = new Particle(i*10,i*20, 2*i+1, 3*i+1);
+        Particle* pcopy = new Particle(i*10,i*20, 2*i+1, 3*i+1);
 
         this->particles.push_back(p);
         this->particlesFirstIteration.push_back(pcopy);
     }
+
+    std::cout << "x on set: " << this->particlesFirstIteration.at(0)->qpoint.x() << std::endl;
+    std::cout << "y on set: " << this->particlesFirstIteration.at(0)->qpoint.y() << std::endl;
 }
 
 void MainProgram::updatePointsPositions(){
@@ -66,7 +70,7 @@ void MainProgram::paintPoint(QPixmap * q, Particle * particle){
 
 void MainProgram::restartPoints(){
     this->particles.clear();
-    //Particle::clearGlobalVariables();
+    Particle::clearGlobalVariables();
     for (int i = 0; i < this->particlesFirstIteration.size(); i++){
         int posx = this->particlesFirstIteration[i]->qpoint.x();
         int posy = this->particlesFirstIteration[i]->qpoint.y();
@@ -76,6 +80,12 @@ void MainProgram::restartPoints(){
 
         this->particles.push_back(pcopy);
     }
+
+    std::cout << "x: " << this->particles.at(0)->qpoint.x() << std::endl;
+    std::cout << "y: " << this->particles.at(0)->qpoint.y() << std::endl;
+
+    std::cout << "x f0: " << this->particlesFirstIteration.at(0)->qpoint.x() << std::endl;
+    std::cout << "y f0: " << this->particlesFirstIteration.at(0)->qpoint.y() << std::endl;
 }
 
 void MainProgram::setPixmap(){
@@ -87,8 +97,8 @@ void MainProgram::setPixmap(){
         std::vector<float> aux;
         mappingMatrix.push_back(aux);
         for (int j = 0; j < WindowConstants::HEIGHT; j++){
-            int posx = i;
-            int posy = j;
+            int posx = i - WindowConstants::WIDTH/2;
+            int posy = j - WindowConstants::HEIGHT/2;
             int vx = 0;
             int vy = 0;
             Particle paux = Particle(posx, posy, vx, vy);

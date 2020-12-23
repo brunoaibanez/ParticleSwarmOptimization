@@ -12,7 +12,7 @@ float Particle::inercia2 = ModelDefaultConstants::defaultInercia2;
 
 Particle::Particle(int x, int y, int vx, int vy)
 {
-    this->qpoint = QPoint((x % WindowConstants::WIDTH) - WindowConstants::WIDTH/2, (y % WindowConstants::HEIGHT) - WindowConstants::HEIGHT/2);
+    this->qpoint = QPoint(x, y);
     this->qvelocity = QPoint(vx,vy);
     this->inerciaVelocity = 1;
     this->setOptimizationValue();
@@ -94,6 +94,9 @@ void Particle::checkIfBestLocalPos(){
 
 
 QPoint Particle::getPrintPoint(){
+
+    std::cout << "X on print from qpoint: " << this->qpoint.x() << std::endl;
+    std::cout << "Y on print from qpoint: " << this->qpoint.y() << std::endl;
     int x = this->qpoint.x() + WindowConstants::WIDTH/2;
     int y = this->qpoint.y() + WindowConstants::HEIGHT/2;
     std::cout << "X: " << x << std::endl;
