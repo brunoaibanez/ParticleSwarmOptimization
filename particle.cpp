@@ -4,12 +4,11 @@
 #include <cmath>
 
 std::string Particle::optimizationFunction = StringConstants::deJongFunction1;
-//QPoint Particle::bestGlobalPos = QPoint();
-/*
+QPoint Particle::bestGlobalPos = QPoint();
 float Particle::bestGlobalRes = 1;
 float Particle::inercia1 = 1;
 float Particle::inercia2 = 1;
-*/
+
 
 Particle::Particle(int x, int y, int vx, int vy)
 {
@@ -47,7 +46,6 @@ void Particle::setOptimizationValue(){
 }
 
 
-
 float Particle::getOptimizationValue(){
     float res;
     if (Particle::optimizationFunction == StringConstants::deJongFunction1){
@@ -68,5 +66,8 @@ float Particle::optimizationFunctionDeJong1(){
 
     return res;
 }
+
+
+
 
 

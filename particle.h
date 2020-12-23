@@ -22,6 +22,10 @@ public:
     float localRes;
 
     static std::string optimizationFunction;
+    static QPoint bestGlobalPos;
+    static float bestGlobalRes;
+    static float inercia1;
+    static float inercia2;
 
 };
 
