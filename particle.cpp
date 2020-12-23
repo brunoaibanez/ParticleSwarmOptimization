@@ -62,8 +62,8 @@ float Particle::getOptimizationValue(){
 }
 
 float Particle::optimizationFunctionDeJong1(){
-    float x = this->qpoint.x();
-    float y = this->qpoint.y();
+    float x = 5.12 * this->qpoint.x() / (WindowConstants::WIDTH/2);
+    float y = 5.12 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
 
     float res = pow(x,2) + pow(y,2);
 
