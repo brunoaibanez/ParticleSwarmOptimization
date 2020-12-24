@@ -5,8 +5,8 @@
 
 namespace WindowConstants
 {
-    const int WIDTH = 600;
-    const int HEIGHT = 600;
+    const int WIDTH = 500;
+    const int HEIGHT = 500;
 
 }
 

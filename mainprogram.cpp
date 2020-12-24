@@ -1,6 +1,7 @@
 #include "mainprogram.h"
 #include "constants.h"
 #include <iostream>
+#include <cmath>
 
 
 MainProgram::MainProgram()
@@ -18,15 +19,22 @@ void MainProgram::setNumberOfParticles(int numberOfParticles){
     Particle::clearGlobalVariables();
     for (int i = 0; i<numberOfParticles; i++){
         //TODO put it random or something bro
-        Particle* p = new Particle(i*10,i*20, 2*i+1, 3*i+1);
-        Particle* pcopy = new Particle(i*10,i*20, 2*i+1, 3*i+1);
+
+        int x = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * WindowConstants::WIDTH - WindowConstants::WIDTH/2) ;
+        int y = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * WindowConstants::HEIGHT - WindowConstants::HEIGHT/2) ;
+
+        std::cout << "x on set: " << x << std::endl;
+        std::cout << "y on set: " << y << std::endl;
+        Particle* p = new Particle(x,y, 0, 0);
+        Particle* pcopy = new Particle(x,y, 0, 0);
 
         this->particles.push_back(p);
         this->particlesFirstIteration.push_back(pcopy);
     }
 
-    std::cout << "x on set: " << this->particlesFirstIteration.at(0)->qpoint.x() << std::endl;
-    std::cout << "y on set: " << this->particlesFirstIteration.at(0)->qpoint.y() << std::endl;
+    std::cout << "aquiiii" << std::endl;
+
+
 }
 
 void MainProgram::updatePointsPositions(){
