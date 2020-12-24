@@ -108,3 +108,25 @@ void MainWindow::on_deJongButton2_toggled(bool checked)
     }
 
 }
+
+void MainWindow::on_RastriginButton6_toggled(bool checked)
+{
+    if (checked){
+        this->mainProgram.setOptimizationFunction(StringConstants::rastriginFunction6);
+        this->mainProgram.setPixmap();
+        this->on_restartButton_clicked();
+    }
+
+}
+
+void MainWindow::on_InerciaBox1_valueChanged(double arg1)
+{
+    this->mainProgram.setInercia1(arg1);
+    this->on_restartButton_clicked();
+}
+
+void MainWindow::on_InerciaBox2_valueChanged(double arg1)
+{
+    this->mainProgram.setInercia2(arg1);
+    this->on_restartButton_clicked();
+}

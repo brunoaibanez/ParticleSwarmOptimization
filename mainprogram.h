@@ -18,6 +18,8 @@ public:
     void updatePointsPositions();
     void setPixmap();
     void setOptimizationFunction(std::string function);
+    void setInercia1(float value);
+    void setInercia2(float value);
     std::vector <Particle *> particles;
     std::vector <Particle *> particlesFirstIteration;
     QPixmap * qpixMap;

@@ -15,6 +15,9 @@ Particle::Particle(int x, int y, int vx, int vy)
     this->qpoint = QPoint(x, y);
     this->qvelocity = QPoint(vx,vy);
     this->inerciaVelocity = 1;
+    this->localRes = this->getOptimizationValue();
+    this->bestLocalPos = this->qpoint;
+    this->bestLocalRes = this->localRes;
     this->setOptimizationValue();
 
 }
@@ -23,16 +26,19 @@ Particle::Particle(int x, int y, int vx, int vy)
 void Particle::updatePosition(){
     this->qpointnext = this->qpoint + this->qvelocity;
 
-    if (this->qpointnext.x() > WindowConstants::WIDTH){
-        this->qpointnext.setX(WindowConstants::WIDTH);
-    }else if (this->qpointnext.x() < 0){
-        this->qpointnext.setX(0);
+    std::cout << "x anterior: " << this->qpoint.x() << std::endl;
+    std::cout << "x next: " <<this->qpointnext.x() << std::endl;
+
+    if (this->qpointnext.x() > WindowConstants::WIDTH/2){
+        this->qpointnext.setX(WindowConstants::WIDTH/2);
+    }else if (this->qpointnext.x() < - WindowConstants::WIDTH/2){
+        this->qpointnext.setX(- WindowConstants::WIDTH/2);
     }
 
-    if (this->qpointnext.y() > WindowConstants::WIDTH){
-        this->qpointnext.setY(WindowConstants::WIDTH);
-    }else if (this->qpointnext.y() < 0){
-        this->qpointnext.setY(0);
+    if (this->qpointnext.y() > WindowConstants::HEIGHT){
+        this->qpointnext.setY(WindowConstants::HEIGHT);
+    }else if (this->qpointnext.y() < - WindowConstants::HEIGHT/2){
+        this->qpointnext.setY(- WindowConstants::HEIGHT/2);
     }
 
     this->recomputeVelocity();
@@ -45,7 +51,6 @@ void Particle::updatePosition(){
 void Particle::setOptimizationValue(){
     this->localRes = this->getOptimizationValue();
     this->checkIfBestLocalPos();
-    this->checkIfBestGlobalPos();
 }
 
 
@@ -56,6 +61,9 @@ float Particle::getOptimizationValue(){
     }
     else if (Particle::optimizationFunction == StringConstants::deJongFunction2){
         res = this->optimizationFunctionDeJong2();
+    }
+    else if (Particle::optimizationFunction == StringConstants::rastriginFunction6){
+        res = this->optimizationFunctionRastrigin6();
     }
     else{
         res = 10000;
@@ -82,12 +90,21 @@ float Particle::optimizationFunctionDeJong2(){
     return res;
 }
 
+float Particle::optimizationFunctionRastrigin6(){
+    float x = 3.5 * this->qpoint.x() / (WindowConstants::WIDTH/2);
+    float y = 3.5 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
+
+    float res = 10*2 + pow(x,2) + pow(y,2) - 10*cos(2*PI*x) - 10*cos(2*PI*y);
+
+    return res;
+}
+
 void Particle::recomputeVelocity(){
    float r1 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
    float r2 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 
    this->qvelocitynext = this->inerciaVelocity * this->qvelocity + Particle::inercia1 * r1 * (this->bestLocalPos - this->qpoint) + Particle::inercia2 * r2 * (this->bestGlobalPos - this->qpoint);
-   this->inerciaVelocity = this->inerciaVelocity * 0.8;
+   this->inerciaVelocity = this->inerciaVelocity * 0.9;
 }
 
 void Particle::checkIfBestGlobalPos(){
@@ -121,8 +138,6 @@ QPoint Particle::getPrintPoint(){
 void Particle::clearGlobalVariables(){
     Particle::bestGlobalPos = QPoint();
     Particle::bestGlobalRes = ModelDefaultConstants::defaultBestGlobalRes;
-    Particle::inercia1 = ModelDefaultConstants::defaultInercia1;
-    Particle::inercia2 = ModelDefaultConstants::defaultInercia2;
 }
 
 

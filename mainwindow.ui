@@ -109,14 +109,17 @@
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Inercia</string>
+        <string>Inercia 1</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+      <widget class="QDoubleSpinBox" name="InerciaBox1">
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
        <property name="value">
-        <double>1.000000000000000</double>
+        <double>0.100000000000000</double>
        </property>
       </widget>
      </item>
@@ -136,14 +139,17 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Inercia</string>
+        <string>Inercia 2</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox">
+      <widget class="QDoubleSpinBox" name="InerciaBox2">
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
        <property name="value">
-        <double>1.000000000000000</double>
+        <double>0.100000000000000</double>
        </property>
       </widget>
      </item>
@@ -154,7 +160,7 @@
      <rect>
       <x>640</x>
       <y>250</y>
-      <width>111</width>
+      <width>139</width>
       <height>80</height>
      </rect>
     </property>
@@ -173,6 +179,13 @@
       <widget class="QRadioButton" name="deJongButton2">
        <property name="text">
         <string>De Jong 2</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="RastriginButton6">
+       <property name="text">
+        <string>Rastrigin 6</string>
        </property>
       </widget>
      </item>

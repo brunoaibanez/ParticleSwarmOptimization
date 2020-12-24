@@ -22,16 +22,22 @@ void MainProgram::setNumberOfParticles(int numberOfParticles){
         int x = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * WindowConstants::WIDTH - WindowConstants::WIDTH/2) ;
         int y = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * WindowConstants::HEIGHT - WindowConstants::HEIGHT/2) ;
 
-        std::cout << "x on set: " << x << std::endl;
-        std::cout << "y on set: " << y << std::endl;
-        Particle* p = new Particle(x,y, 0, 0);
-        Particle* pcopy = new Particle(x,y, 0, 0);
+        Particle* p = new Particle(x,y, i, i);
+        Particle* pcopy = new Particle(x,y, i, i);
 
         this->particles.push_back(p);
         this->particlesFirstIteration.push_back(pcopy);
     }
 
-    std::cout << "aquiiii" << std::endl;
+    Particle * p = this->particles.at(0);
+    Particle::bestGlobalPos = p->qpoint;
+    Particle::bestGlobalRes = p->getOptimizationValue();
+
+    for (int i = 0; i < this->particles.size(); i++)
+    {
+        Particle * p = this->particles.at(i);
+        p->checkIfBestGlobalPos();
+    }
 
 
 }
@@ -42,6 +48,12 @@ void MainProgram::updatePointsPositions(){
     {
         Particle * p = this->particles.at(i);
         p->updatePosition();
+    }
+
+    for (int i = 0; i < this->particles.size(); i++)
+    {
+        Particle * p = this->particles.at(i);
+        p->checkIfBestGlobalPos();
     }
 
 }
@@ -138,5 +150,16 @@ void MainProgram::setPixmap(){
     this->qpixMap = mappingPixmap;
 
     delete painter;
+
+}
+
+void MainProgram::setInercia1(float value){
+
+    Particle::inercia1 = value;
+}
+
+void MainProgram::setInercia2(float value){
+
+    Particle::inercia2 = value;
 
 }

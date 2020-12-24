@@ -3,6 +3,8 @@
 
 #include <QPoint>
 
+#define PI 3.14159265
+
 class Particle
 {
 public:
@@ -15,6 +17,7 @@ public:
 
     float optimizationFunctionDeJong1();
     float optimizationFunctionDeJong2();
+    float optimizationFunctionRastrigin6();
 
     float getOptimizationValue();
     void setOptimizationValue();

@@ -37,6 +37,12 @@ private slots:
 
     void on_deJongButton2_toggled(bool checked);
 
+    void on_RastriginButton6_toggled(bool checked);
+
+    void on_InerciaBox1_valueChanged(double arg1);
+
+    void on_InerciaBox2_valueChanged(double arg1);
+
 private:
     Ui::MainWindow *ui;
 };
