@@ -18,7 +18,6 @@ void MainProgram::setNumberOfParticles(int numberOfParticles){
     this->particlesFirstIteration.clear();
     Particle::clearGlobalVariables();
     for (int i = 0; i<numberOfParticles; i++){
-        //TODO put it random or something bro
 
         int x = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * WindowConstants::WIDTH - WindowConstants::WIDTH/2) ;
         int y = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * WindowConstants::HEIGHT - WindowConstants::HEIGHT/2) ;
