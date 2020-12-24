@@ -163,3 +163,7 @@ void MainProgram::setInercia2(float value){
     Particle::inercia2 = value;
 
 }
+
+void MainProgram::setInercialWeight(float value){
+    Particle::inercialWeight = value;
+}

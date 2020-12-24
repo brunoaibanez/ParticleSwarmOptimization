@@ -43,6 +43,8 @@ private slots:
 
     void on_InerciaBox2_valueChanged(double arg1);
 
+    void on_InercialWeightBox_valueChanged(double arg1);
+
 private:
     Ui::MainWindow *ui;
 };

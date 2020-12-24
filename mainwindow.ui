@@ -72,7 +72,7 @@
       <x>640</x>
       <y>10</y>
       <width>111</width>
-      <height>201</height>
+      <height>242</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -109,7 +109,7 @@
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Inercia 1</string>
+        <string>Inercia Individual</string>
        </property>
       </widget>
      </item>
@@ -139,7 +139,7 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Inercia 2</string>
+        <string>Inercia Colectiva</string>
        </property>
       </widget>
      </item>
@@ -153,14 +153,44 @@
        </property>
       </widget>
      </item>
+     <item>
+      <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Peso inercial</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="InercialWeightBox">
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="value">
+        <double>0.900000000000000</double>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>250</y>
-      <width>139</width>
+      <y>310</y>
+      <width>111</width>
       <height>80</height>
      </rect>
     </property>

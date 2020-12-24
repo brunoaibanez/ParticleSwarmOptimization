@@ -130,3 +130,9 @@ void MainWindow::on_InerciaBox2_valueChanged(double arg1)
     this->mainProgram.setInercia2(arg1);
     this->on_restartButton_clicked();
 }
+
+void MainWindow::on_InercialWeightBox_valueChanged(double arg1)
+{
+    this->mainProgram.setInercialWeight(arg1);
+    this->on_restartButton_clicked();
+}

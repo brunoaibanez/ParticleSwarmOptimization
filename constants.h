@@ -22,7 +22,8 @@ namespace ModelDefaultConstants
 {
     const float defaultBestGlobalRes = 1;
     const float defaultInercia1 = 0.1;
-    const float defaultInercia2 = 0.3;
+    const float defaultInercia2 = 0.1;
+    const float defaultInercialWeight = 0.9;
 }
 
 class Constants

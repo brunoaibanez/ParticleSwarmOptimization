@@ -8,6 +8,7 @@ QPoint Particle::bestGlobalPos = QPoint();
 float Particle::bestGlobalRes = ModelDefaultConstants::defaultBestGlobalRes;
 float Particle::inercia1 = ModelDefaultConstants::defaultInercia1;
 float Particle::inercia2 = ModelDefaultConstants::defaultInercia2;
+float Particle::inercialWeight = ModelDefaultConstants::defaultInercialWeight;
 
 
 Particle::Particle(int x, int y, int vx, int vy)
@@ -19,6 +20,10 @@ Particle::Particle(int x, int y, int vx, int vy)
     this->bestLocalPos = this->qpoint;
     this->bestLocalRes = this->localRes;
     this->setOptimizationValue();
+    if (Particle::bestGlobalPos.isNull()){
+        Particle::bestGlobalPos = this->qpoint;
+        Particle::bestGlobalRes = this->localRes;
+    }
 
 }
 
@@ -104,7 +109,7 @@ void Particle::recomputeVelocity(){
    float r2 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 
    this->qvelocitynext = this->inerciaVelocity * this->qvelocity + Particle::inercia1 * r1 * (this->bestLocalPos - this->qpoint) + Particle::inercia2 * r2 * (this->bestGlobalPos - this->qpoint);
-   this->inerciaVelocity = this->inerciaVelocity * 0.9;
+   this->inerciaVelocity = this->inerciaVelocity * Particle::inercialWeight;
 }
 
 void Particle::checkIfBestGlobalPos(){
@@ -144,6 +149,7 @@ void Particle::clearGlobalVariables(){
 void Particle::setOptimizationFunction(std::string function){
     Particle::optimizationFunction = function;
 }
+
 
 
 
