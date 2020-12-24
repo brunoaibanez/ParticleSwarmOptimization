@@ -54,6 +54,9 @@ float Particle::getOptimizationValue(){
     if (Particle::optimizationFunction == StringConstants::deJongFunction1){
         res = this->optimizationFunctionDeJong1();
     }
+    else if (Particle::optimizationFunction == StringConstants::deJongFunction2){
+        res = this->optimizationFunctionDeJong2();
+    }
     else{
         res = 10000;
     }
@@ -66,6 +69,15 @@ float Particle::optimizationFunctionDeJong1(){
     float y = 5.12 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
 
     float res = pow(x,2) + pow(y,2);
+
+    return res;
+}
+
+float Particle::optimizationFunctionDeJong2(){
+    float x = 5.12 * this->qpoint.x() / (WindowConstants::WIDTH/2);
+    float y = 5.12 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
+
+    float res = 1*pow(x,2) + 2*pow(y,2);
 
     return res;
 }
@@ -111,6 +123,11 @@ void Particle::clearGlobalVariables(){
     Particle::bestGlobalRes = ModelDefaultConstants::defaultBestGlobalRes;
     Particle::inercia1 = ModelDefaultConstants::defaultInercia1;
     Particle::inercia2 = ModelDefaultConstants::defaultInercia2;
+}
+
+
+void Particle::setOptimizationFunction(std::string function){
+    Particle::optimizationFunction = function;
 }
 
 

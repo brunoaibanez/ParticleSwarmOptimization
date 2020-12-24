@@ -32,6 +32,11 @@ private slots:
 
     void on_numberOfParticles_valueChanged(int arg1);
 
+
+    void on_deJongButton1_toggled(bool checked);
+
+    void on_deJongButton2_toggled(bool checked);
+
 private:
     Ui::MainWindow *ui;
 };

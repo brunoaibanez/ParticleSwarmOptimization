@@ -80,12 +80,10 @@ void MainProgram::restartPoints(){
 
         this->particles.push_back(pcopy);
     }
+}
 
-    std::cout << "x: " << this->particles.at(0)->qpoint.x() << std::endl;
-    std::cout << "y: " << this->particles.at(0)->qpoint.y() << std::endl;
-
-    std::cout << "x f0: " << this->particlesFirstIteration.at(0)->qpoint.x() << std::endl;
-    std::cout << "y f0: " << this->particlesFirstIteration.at(0)->qpoint.y() << std::endl;
+void MainProgram::setOptimizationFunction(std::string function){
+    Particle::setOptimizationFunction(function);
 }
 
 void MainProgram::setPixmap(){
@@ -119,15 +117,16 @@ void MainProgram::setPixmap(){
             float valueNormalized = mappingMatrix.at(i).at(j) / maxValue;
             int valuePixel = int(valueNormalized * 255);
 
-            QPen linepen(QColor(valuePixel,valuePixel,valuePixel,valuePixel));
+            QPen linepen(QColor(valuePixel,valuePixel,valuePixel,200));
             linepen.setCapStyle(Qt::RoundCap);
-            linepen.setWidth(1);
+            linepen.setWidth(3);
             painter->setPen(linepen);
             QPoint qpaintpoint = QPoint(i,j);
             painter->drawPoint(qpaintpoint);
 
         }
     }
+
 
     this->qpixMap = mappingPixmap;
 

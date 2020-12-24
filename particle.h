@@ -9,9 +9,13 @@ public:
     Particle(int x, int y, int vx, int vy);
     void updatePosition();
     void recomputeVelocity();
+
     void checkIfBestGlobalPos();
     void checkIfBestLocalPos();
+
     float optimizationFunctionDeJong1();
+    float optimizationFunctionDeJong2();
+
     float getOptimizationValue();
     void setOptimizationValue();
 

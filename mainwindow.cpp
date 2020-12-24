@@ -1,8 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "constants.h"
 #include <iostream>
 #include "mainprogram.h"
 #include <QTimer>
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -85,5 +87,24 @@ void MainWindow::on_numberOfParticles_valueChanged(int arg1)
 
     QPixmap q = this->mainProgram.refreshWindow();
     ui->labelGrid->setPixmap(q);
+
+}
+
+void MainWindow::on_deJongButton1_toggled(bool checked)
+{
+    if (checked){
+        this->mainProgram.setOptimizationFunction(StringConstants::deJongFunction1);
+        this->mainProgram.setPixmap();
+        this->on_restartButton_clicked();
+    }
+}
+
+void MainWindow::on_deJongButton2_toggled(bool checked)
+{
+    if (checked){
+        this->mainProgram.setOptimizationFunction(StringConstants::deJongFunction2);
+        this->mainProgram.setPixmap();
+        this->on_restartButton_clicked();
+    }
 
 }

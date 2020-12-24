@@ -13,6 +13,7 @@ namespace WindowConstants
 namespace StringConstants
 {
     const std::string deJongFunction1 = "DeJongFunction1";
+    const std::string deJongFunction2 = "DeJongFunction2";
 
 }
 

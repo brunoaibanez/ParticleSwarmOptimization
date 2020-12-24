@@ -17,6 +17,7 @@ public:
     void setNumberOfParticles(int numberOfParticles);
     void updatePointsPositions();
     void setPixmap();
+    void setOptimizationFunction(std::string function);
     std::vector <Particle *> particles;
     std::vector <Particle *> particlesFirstIteration;
     QPixmap * qpixMap;
