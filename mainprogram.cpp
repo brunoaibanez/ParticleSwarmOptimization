@@ -80,9 +80,9 @@ void MainProgram::paintPoint(QPixmap * q, Particle * particle){
     painter->setPen(linepen);
     QPoint qpaintpoint = particle->getPrintPoint();
     painter->drawPoint(qpaintpoint);
-    QString qs = "("+ QString::number(particle->qvelocity.x()) + " , " + QString::number(particle->qvelocity.y()) + ")";
-    QPoint qpos = qpaintpoint + QPoint(5,5);
-    painter->drawText(qpos,qs);
+    //QString qs = "("+ QString::number(particle->qvelocity.x()) + " , " + QString::number(particle->qvelocity.y()) + ")";
+    //QPoint qpos = qpaintpoint + QPoint(5,5);
+    //painter->drawText(qpos,qs);
     delete painter;
 }
 
