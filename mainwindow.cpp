@@ -20,6 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->started = false;
 
+    this->changeFunctionLabel("/Users/bruno/AG/deJong1.png");
+
     QTimer *timer = new QTimer(this);
     this->mytimer = timer;
     connect(timer, SIGNAL(timeout()), this, SLOT(on_startButton_clicked()));
@@ -43,8 +45,6 @@ void MainWindow::showParticles(){
 void MainWindow::on_startButton_clicked()
 {
 
-    int w = ui->labelGrid->width();
-    int h = ui->labelGrid->height();
     this->mainProgram.updatePointsPositions();
     QPixmap q = this->mainProgram.refreshWindow();
     ui->labelGrid->setPixmap(q);
@@ -96,7 +96,14 @@ void MainWindow::on_deJongButton1_toggled(bool checked)
         this->mainProgram.setOptimizationFunction(StringConstants::deJongFunction1);
         this->mainProgram.setPixmap();
         this->on_restartButton_clicked();
+        this->changeFunctionLabel("/Users/bruno/AG/deJong1.png");
     }
+}
+
+void MainWindow::changeFunctionLabel(std::string path){
+    QPixmap mypix (QString::fromStdString(path));
+    mypix = mypix.scaled(ui->functionLabel->size(),Qt::KeepAspectRatio);
+    ui->functionLabel->setPixmap(mypix);
 }
 
 void MainWindow::on_deJongButton2_toggled(bool checked)
@@ -105,6 +112,7 @@ void MainWindow::on_deJongButton2_toggled(bool checked)
         this->mainProgram.setOptimizationFunction(StringConstants::deJongFunction2);
         this->mainProgram.setPixmap();
         this->on_restartButton_clicked();
+        this->changeFunctionLabel("/Users/bruno/AG/deJong2.png");
     }
 
 }
@@ -115,6 +123,7 @@ void MainWindow::on_RastriginButton6_toggled(bool checked)
         this->mainProgram.setOptimizationFunction(StringConstants::rastriginFunction6);
         this->mainProgram.setPixmap();
         this->on_restartButton_clicked();
+        this->changeFunctionLabel("/Users/bruno/AG/Rastrigin6.png");
     }
 
 }
