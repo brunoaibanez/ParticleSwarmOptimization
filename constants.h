@@ -28,7 +28,7 @@ namespace ModelDefaultConstants
 }
 
 namespace MaxValues{
-    const int maxVelocity = 10;
+    const int maxVelocity = 30;
 }
 
 class Constants

@@ -109,6 +109,10 @@ void Particle::recomputeVelocity(){
    float r2 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 
    this->qvelocitynext = this->inerciaVelocity * this->qvelocity + Particle::inercia1 * r1 * (this->bestLocalPos - this->qpoint) + Particle::inercia2 * r2 * (this->bestGlobalPos - this->qpoint);
+   float norm = sqrt(pow(this->qvelocitynext.x(), 2) + pow(this->qvelocitynext.y(), 2));
+   if (norm > MaxValues::maxVelocity){
+       this->qvelocitynext = this->qvelocitynext * MaxValues::maxVelocity / norm;
+   }
    this->inerciaVelocity = this->inerciaVelocity * Particle::inercialWeight;
 }
 
