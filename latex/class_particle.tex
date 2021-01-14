@@ -1,0 +1,377 @@
+\hypertarget{class_particle}{}\doxysection{Particle Class Reference}
+\label{class_particle}\index{Particle@{Particle}}
+
+
+{\ttfamily \#include $<$particle.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_particle_a924496270596261ad52c23f2f96ab564}{Particle}} (int x, int y, int vx, int vy)
+\item 
+void \mbox{\hyperlink{class_particle_aeb5ac29c4aa283c78dd9a5a2013fc3fc}{update\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_particle_acb68f539913c51d6b799f95a91bd0c5a}{recompute\+Velocity}} ()
+\item 
+void \mbox{\hyperlink{class_particle_a1ceda34a2bc7dcf1610d265056e04fce}{check\+If\+Best\+Global\+Pos}} ()
+\item 
+void \mbox{\hyperlink{class_particle_af4f5892fcec61ab793d944bae6e6e5e4}{check\+If\+Best\+Local\+Pos}} ()
+\item 
+float \mbox{\hyperlink{class_particle_aa0fae5d75b7a3a5189668f72209471ae}{optimization\+Function\+De\+Jong1}} ()
+\item 
+float \mbox{\hyperlink{class_particle_a695023810d2182cfcb16df719d99d2bc}{optimization\+Function\+De\+Jong2}} ()
+\item 
+float \mbox{\hyperlink{class_particle_a53c29bd14089e71ccce46f4576f97042}{optimization\+Function\+Rastrigin6}} ()
+\item 
+float \mbox{\hyperlink{class_particle_a2e47316e130d04cc6c314aaa4771aad9}{get\+Optimization\+Value}} ()
+\item 
+void \mbox{\hyperlink{class_particle_add7648c220a399e2f1cab5abc7bf253d}{set\+Optimization\+Value}} ()
+\item 
+QPoint \mbox{\hyperlink{class_particle_a5d19a63f6f278a4610445c00283dfc23}{get\+Print\+Point}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_particle_a44680cfc949880b3d449f8928588fd07}{set\+Optimization\+Function}} (std\+::string function)
+\item 
+static void \mbox{\hyperlink{class_particle_a1be9f95239114df070d23b32785cb6c0}{clear\+Global\+Variables}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QPoint \mbox{\hyperlink{class_particle_a604db61bfb457a2244fb52771abb11db}{qpoint}}
+\item 
+QPoint \mbox{\hyperlink{class_particle_a4dc1aedaa615ca0eae7c478c28b21da9}{qpointnext}}
+\item 
+QPoint \mbox{\hyperlink{class_particle_aa33c6e9da744336df27157b7bfb674ff}{qvelocity}}
+\item 
+QPoint \mbox{\hyperlink{class_particle_a247d87e3ba0522196794434c42f26a3f}{qvelocitynext}}
+\item 
+float \mbox{\hyperlink{class_particle_aa5edbcadefddb5258d4649e476577974}{inercia\+Velocity}}
+\item 
+QPoint \mbox{\hyperlink{class_particle_a2ea781f21fb900a54b9636a89fc53364}{best\+Local\+Pos}}
+\item 
+float \mbox{\hyperlink{class_particle_a6d43ba84b1da80d76c537f787142b3f8}{best\+Local\+Res}}
+\item 
+float \mbox{\hyperlink{class_particle_a3d0c3bbcd575e0b21e976622a6850b19}{local\+Res}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{class_particle_a811075fcae9661685c422550a6505dfd}{optimization\+Function}} = \mbox{\hyperlink{namespace_string_constants_a3a2899dd84d8e2035b574d73f9999ec4}{String\+Constants\+::de\+Jong\+Function1}}
+\item 
+static QPoint \mbox{\hyperlink{class_particle_a2229f42bbdd5678bfaea19c349f07954}{best\+Global\+Pos}} = QPoint()
+\item 
+static float \mbox{\hyperlink{class_particle_a7c1cbee0cb0cbc223dd51fd1e4a5870c}{best\+Global\+Res}} = \mbox{\hyperlink{namespace_model_default_constants_afaa3e86880ba703953a8eaf3d666b37d}{Model\+Default\+Constants\+::default\+Best\+Global\+Res}}
+\item 
+static float \mbox{\hyperlink{class_particle_ae431446405a6b764d6ad3afdcb6746e2}{inercia1}} = \mbox{\hyperlink{namespace_model_default_constants_a8b6a7433e1ed7182fff327d1dd936012}{Model\+Default\+Constants\+::default\+Inercia1}}
+\item 
+static float \mbox{\hyperlink{class_particle_ab91c98b61f78bdd9cf11ad0b8d80d03d}{inercia2}} = \mbox{\hyperlink{namespace_model_default_constants_a4717b75a4a18f4855ec655ddffdf5578}{Model\+Default\+Constants\+::default\+Inercia2}}
+\item 
+static float \mbox{\hyperlink{class_particle_a87b70c15e844c96f0c52a3b26cf3642c}{inercial\+Weight}} = \mbox{\hyperlink{namespace_model_default_constants_a4186096aa4ba45d42a484eb50fa2e769}{Model\+Default\+Constants\+::default\+Inercial\+Weight}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_particle_a924496270596261ad52c23f2f96ab564}\label{class_particle_a924496270596261ad52c23f2f96ab564}} 
+\index{Particle@{Particle}!Particle@{Particle}}
+\index{Particle@{Particle}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{Particle()}{Particle()}}
+{\footnotesize\ttfamily Particle\+::\+Particle (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{vx,  }\item[{int}]{vy }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_a924496270596261ad52c23f2f96ab564_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_particle_a1ceda34a2bc7dcf1610d265056e04fce}\label{class_particle_a1ceda34a2bc7dcf1610d265056e04fce}} 
+\index{Particle@{Particle}!checkIfBestGlobalPos@{checkIfBestGlobalPos}}
+\index{checkIfBestGlobalPos@{checkIfBestGlobalPos}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{checkIfBestGlobalPos()}{checkIfBestGlobalPos()}}
+{\footnotesize\ttfamily void Particle\+::check\+If\+Best\+Global\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_a1ceda34a2bc7dcf1610d265056e04fce_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_particle_af4f5892fcec61ab793d944bae6e6e5e4}\label{class_particle_af4f5892fcec61ab793d944bae6e6e5e4}} 
+\index{Particle@{Particle}!checkIfBestLocalPos@{checkIfBestLocalPos}}
+\index{checkIfBestLocalPos@{checkIfBestLocalPos}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{checkIfBestLocalPos()}{checkIfBestLocalPos()}}
+{\footnotesize\ttfamily void Particle\+::check\+If\+Best\+Local\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_af4f5892fcec61ab793d944bae6e6e5e4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_particle_a1be9f95239114df070d23b32785cb6c0}\label{class_particle_a1be9f95239114df070d23b32785cb6c0}} 
+\index{Particle@{Particle}!clearGlobalVariables@{clearGlobalVariables}}
+\index{clearGlobalVariables@{clearGlobalVariables}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{clearGlobalVariables()}{clearGlobalVariables()}}
+{\footnotesize\ttfamily void Particle\+::clear\+Global\+Variables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_a1be9f95239114df070d23b32785cb6c0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_particle_a2e47316e130d04cc6c314aaa4771aad9}\label{class_particle_a2e47316e130d04cc6c314aaa4771aad9}} 
+\index{Particle@{Particle}!getOptimizationValue@{getOptimizationValue}}
+\index{getOptimizationValue@{getOptimizationValue}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{getOptimizationValue()}{getOptimizationValue()}}
+{\footnotesize\ttfamily float Particle\+::get\+Optimization\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_a2e47316e130d04cc6c314aaa4771aad9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_a2e47316e130d04cc6c314aaa4771aad9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_particle_a5d19a63f6f278a4610445c00283dfc23}\label{class_particle_a5d19a63f6f278a4610445c00283dfc23}} 
+\index{Particle@{Particle}!getPrintPoint@{getPrintPoint}}
+\index{getPrintPoint@{getPrintPoint}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{getPrintPoint()}{getPrintPoint()}}
+{\footnotesize\ttfamily QPoint Particle\+::get\+Print\+Point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_a5d19a63f6f278a4610445c00283dfc23_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_particle_aa0fae5d75b7a3a5189668f72209471ae}\label{class_particle_aa0fae5d75b7a3a5189668f72209471ae}} 
+\index{Particle@{Particle}!optimizationFunctionDeJong1@{optimizationFunctionDeJong1}}
+\index{optimizationFunctionDeJong1@{optimizationFunctionDeJong1}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{optimizationFunctionDeJong1()}{optimizationFunctionDeJong1()}}
+{\footnotesize\ttfamily float Particle\+::optimization\+Function\+De\+Jong1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_aa0fae5d75b7a3a5189668f72209471ae_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_particle_a695023810d2182cfcb16df719d99d2bc}\label{class_particle_a695023810d2182cfcb16df719d99d2bc}} 
+\index{Particle@{Particle}!optimizationFunctionDeJong2@{optimizationFunctionDeJong2}}
+\index{optimizationFunctionDeJong2@{optimizationFunctionDeJong2}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{optimizationFunctionDeJong2()}{optimizationFunctionDeJong2()}}
+{\footnotesize\ttfamily float Particle\+::optimization\+Function\+De\+Jong2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_a695023810d2182cfcb16df719d99d2bc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_particle_a53c29bd14089e71ccce46f4576f97042}\label{class_particle_a53c29bd14089e71ccce46f4576f97042}} 
+\index{Particle@{Particle}!optimizationFunctionRastrigin6@{optimizationFunctionRastrigin6}}
+\index{optimizationFunctionRastrigin6@{optimizationFunctionRastrigin6}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{optimizationFunctionRastrigin6()}{optimizationFunctionRastrigin6()}}
+{\footnotesize\ttfamily float Particle\+::optimization\+Function\+Rastrigin6 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_a53c29bd14089e71ccce46f4576f97042_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_particle_acb68f539913c51d6b799f95a91bd0c5a}\label{class_particle_acb68f539913c51d6b799f95a91bd0c5a}} 
+\index{Particle@{Particle}!recomputeVelocity@{recomputeVelocity}}
+\index{recomputeVelocity@{recomputeVelocity}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{recomputeVelocity()}{recomputeVelocity()}}
+{\footnotesize\ttfamily void Particle\+::recompute\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_acb68f539913c51d6b799f95a91bd0c5a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_particle_a44680cfc949880b3d449f8928588fd07}\label{class_particle_a44680cfc949880b3d449f8928588fd07}} 
+\index{Particle@{Particle}!setOptimizationFunction@{setOptimizationFunction}}
+\index{setOptimizationFunction@{setOptimizationFunction}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{setOptimizationFunction()}{setOptimizationFunction()}}
+{\footnotesize\ttfamily void Particle\+::set\+Optimization\+Function (\begin{DoxyParamCaption}\item[{std\+::string}]{function }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_a44680cfc949880b3d449f8928588fd07_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_particle_add7648c220a399e2f1cab5abc7bf253d}\label{class_particle_add7648c220a399e2f1cab5abc7bf253d}} 
+\index{Particle@{Particle}!setOptimizationValue@{setOptimizationValue}}
+\index{setOptimizationValue@{setOptimizationValue}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{setOptimizationValue()}{setOptimizationValue()}}
+{\footnotesize\ttfamily void Particle\+::set\+Optimization\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_add7648c220a399e2f1cab5abc7bf253d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_add7648c220a399e2f1cab5abc7bf253d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_particle_aeb5ac29c4aa283c78dd9a5a2013fc3fc}\label{class_particle_aeb5ac29c4aa283c78dd9a5a2013fc3fc}} 
+\index{Particle@{Particle}!updatePosition@{updatePosition}}
+\index{updatePosition@{updatePosition}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{updatePosition()}{updatePosition()}}
+{\footnotesize\ttfamily void Particle\+::update\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_aeb5ac29c4aa283c78dd9a5a2013fc3fc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_aeb5ac29c4aa283c78dd9a5a2013fc3fc_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_particle_a2229f42bbdd5678bfaea19c349f07954}\label{class_particle_a2229f42bbdd5678bfaea19c349f07954}} 
+\index{Particle@{Particle}!bestGlobalPos@{bestGlobalPos}}
+\index{bestGlobalPos@{bestGlobalPos}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{bestGlobalPos}{bestGlobalPos}}
+{\footnotesize\ttfamily QPoint Particle\+::best\+Global\+Pos = QPoint()\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_particle_a7c1cbee0cb0cbc223dd51fd1e4a5870c}\label{class_particle_a7c1cbee0cb0cbc223dd51fd1e4a5870c}} 
+\index{Particle@{Particle}!bestGlobalRes@{bestGlobalRes}}
+\index{bestGlobalRes@{bestGlobalRes}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{bestGlobalRes}{bestGlobalRes}}
+{\footnotesize\ttfamily float Particle\+::best\+Global\+Res = \mbox{\hyperlink{namespace_model_default_constants_afaa3e86880ba703953a8eaf3d666b37d}{Model\+Default\+Constants\+::default\+Best\+Global\+Res}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_particle_a2ea781f21fb900a54b9636a89fc53364}\label{class_particle_a2ea781f21fb900a54b9636a89fc53364}} 
+\index{Particle@{Particle}!bestLocalPos@{bestLocalPos}}
+\index{bestLocalPos@{bestLocalPos}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{bestLocalPos}{bestLocalPos}}
+{\footnotesize\ttfamily QPoint Particle\+::best\+Local\+Pos}
+
+\mbox{\Hypertarget{class_particle_a6d43ba84b1da80d76c537f787142b3f8}\label{class_particle_a6d43ba84b1da80d76c537f787142b3f8}} 
+\index{Particle@{Particle}!bestLocalRes@{bestLocalRes}}
+\index{bestLocalRes@{bestLocalRes}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{bestLocalRes}{bestLocalRes}}
+{\footnotesize\ttfamily float Particle\+::best\+Local\+Res}
+
+\mbox{\Hypertarget{class_particle_ae431446405a6b764d6ad3afdcb6746e2}\label{class_particle_ae431446405a6b764d6ad3afdcb6746e2}} 
+\index{Particle@{Particle}!inercia1@{inercia1}}
+\index{inercia1@{inercia1}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{inercia1}{inercia1}}
+{\footnotesize\ttfamily float Particle\+::inercia1 = \mbox{\hyperlink{namespace_model_default_constants_a8b6a7433e1ed7182fff327d1dd936012}{Model\+Default\+Constants\+::default\+Inercia1}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_particle_ab91c98b61f78bdd9cf11ad0b8d80d03d}\label{class_particle_ab91c98b61f78bdd9cf11ad0b8d80d03d}} 
+\index{Particle@{Particle}!inercia2@{inercia2}}
+\index{inercia2@{inercia2}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{inercia2}{inercia2}}
+{\footnotesize\ttfamily float Particle\+::inercia2 = \mbox{\hyperlink{namespace_model_default_constants_a4717b75a4a18f4855ec655ddffdf5578}{Model\+Default\+Constants\+::default\+Inercia2}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_particle_a87b70c15e844c96f0c52a3b26cf3642c}\label{class_particle_a87b70c15e844c96f0c52a3b26cf3642c}} 
+\index{Particle@{Particle}!inercialWeight@{inercialWeight}}
+\index{inercialWeight@{inercialWeight}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{inercialWeight}{inercialWeight}}
+{\footnotesize\ttfamily float Particle\+::inercial\+Weight = \mbox{\hyperlink{namespace_model_default_constants_a4186096aa4ba45d42a484eb50fa2e769}{Model\+Default\+Constants\+::default\+Inercial\+Weight}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_particle_aa5edbcadefddb5258d4649e476577974}\label{class_particle_aa5edbcadefddb5258d4649e476577974}} 
+\index{Particle@{Particle}!inerciaVelocity@{inerciaVelocity}}
+\index{inerciaVelocity@{inerciaVelocity}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{inerciaVelocity}{inerciaVelocity}}
+{\footnotesize\ttfamily float Particle\+::inercia\+Velocity}
+
+\mbox{\Hypertarget{class_particle_a3d0c3bbcd575e0b21e976622a6850b19}\label{class_particle_a3d0c3bbcd575e0b21e976622a6850b19}} 
+\index{Particle@{Particle}!localRes@{localRes}}
+\index{localRes@{localRes}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{localRes}{localRes}}
+{\footnotesize\ttfamily float Particle\+::local\+Res}
+
+\mbox{\Hypertarget{class_particle_a811075fcae9661685c422550a6505dfd}\label{class_particle_a811075fcae9661685c422550a6505dfd}} 
+\index{Particle@{Particle}!optimizationFunction@{optimizationFunction}}
+\index{optimizationFunction@{optimizationFunction}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{optimizationFunction}{optimizationFunction}}
+{\footnotesize\ttfamily std\+::string Particle\+::optimization\+Function = \mbox{\hyperlink{namespace_string_constants_a3a2899dd84d8e2035b574d73f9999ec4}{String\+Constants\+::de\+Jong\+Function1}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_particle_a604db61bfb457a2244fb52771abb11db}\label{class_particle_a604db61bfb457a2244fb52771abb11db}} 
+\index{Particle@{Particle}!qpoint@{qpoint}}
+\index{qpoint@{qpoint}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{qpoint}{qpoint}}
+{\footnotesize\ttfamily QPoint Particle\+::qpoint}
+
+\mbox{\Hypertarget{class_particle_a4dc1aedaa615ca0eae7c478c28b21da9}\label{class_particle_a4dc1aedaa615ca0eae7c478c28b21da9}} 
+\index{Particle@{Particle}!qpointnext@{qpointnext}}
+\index{qpointnext@{qpointnext}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{qpointnext}{qpointnext}}
+{\footnotesize\ttfamily QPoint Particle\+::qpointnext}
+
+\mbox{\Hypertarget{class_particle_aa33c6e9da744336df27157b7bfb674ff}\label{class_particle_aa33c6e9da744336df27157b7bfb674ff}} 
+\index{Particle@{Particle}!qvelocity@{qvelocity}}
+\index{qvelocity@{qvelocity}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{qvelocity}{qvelocity}}
+{\footnotesize\ttfamily QPoint Particle\+::qvelocity}
+
+\mbox{\Hypertarget{class_particle_a247d87e3ba0522196794434c42f26a3f}\label{class_particle_a247d87e3ba0522196794434c42f26a3f}} 
+\index{Particle@{Particle}!qvelocitynext@{qvelocitynext}}
+\index{qvelocitynext@{qvelocitynext}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{qvelocitynext}{qvelocitynext}}
+{\footnotesize\ttfamily QPoint Particle\+::qvelocitynext}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{particle_8h}{particle.\+h}}\item 
+\mbox{\hyperlink{particle_8cpp}{particle.\+cpp}}\end{DoxyCompactItemize}
