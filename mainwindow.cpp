@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->started = false;
 
-    this->changeFunctionLabel("/Users/bruno/AG/deJong1.png");
+    this->changeFunctionLabel(":/j1.png");
 
     QTimer *timer = new QTimer(this);
     this->mytimer = timer;
@@ -96,7 +96,7 @@ void MainWindow::on_deJongButton1_toggled(bool checked)
         this->mainProgram.setOptimizationFunction(StringConstants::deJongFunction1);
         this->mainProgram.setPixmap();
         this->on_restartButton_clicked();
-        this->changeFunctionLabel("/Users/bruno/AG/deJong1.png");
+        this->changeFunctionLabel(":/j1.png");
     }
 }
 
@@ -112,7 +112,7 @@ void MainWindow::on_deJongButton2_toggled(bool checked)
         this->mainProgram.setOptimizationFunction(StringConstants::deJongFunction2);
         this->mainProgram.setPixmap();
         this->on_restartButton_clicked();
-        this->changeFunctionLabel("/Users/bruno/AG/deJong2.png");
+        this->changeFunctionLabel(":/j2.png");
     }
 
 }
@@ -123,7 +123,7 @@ void MainWindow::on_RastriginButton6_toggled(bool checked)
         this->mainProgram.setOptimizationFunction(StringConstants::rastriginFunction6);
         this->mainProgram.setPixmap();
         this->on_restartButton_clicked();
-        this->changeFunctionLabel("/Users/bruno/AG/Rastrigin6.png");
+        this->changeFunctionLabel(":/r.png");
     }
 
 }
