@@ -1,0 +1,13 @@
+<map id="MainWindow::on_numberOfParticles_valueChanged" name="MainWindow::on_numberOfParticles_valueChanged">
+<area shape="rect" id="node1" title=" " alt="" coords="5,49,240,90"/>
+<area shape="rect" id="node2" href="$class_main_program.html#a4fa7f9ae2b465abba36113e1fcb24627" title=" " alt="" coords="288,16,483,43"/>
+<area shape="rect" id="node5" href="$class_main_program.html#a5b2e36578651ad91168216f0da290cbf" title=" " alt="" coords="293,78,478,119"/>
+<area shape="rect" id="node3" href="$class_main_program.html#a4848abd74254c660aa01b9600f1a7f88" title=" " alt="" coords="550,5,715,32"/>
+<area shape="rect" id="node4" href="$class_particle.html#a5d19a63f6f278a4610445c00283dfc23" title=" " alt="" coords="805,5,955,32"/>
+<area shape="rect" id="node6" href="$class_particle.html#a1ceda34a2bc7dcf1610d265056e04fce" title=" " alt="" coords="531,56,735,83"/>
+<area shape="rect" id="node7" href="$class_particle.html#a1be9f95239114df070d23b32785cb6c0" title=" " alt="" coords="537,107,729,133"/>
+<area shape="rect" id="node8" href="$class_particle.html#a2e47316e130d04cc6c314aaa4771aad9" title=" " alt="" coords="550,158,715,199"/>
+<area shape="rect" id="node9" href="$class_particle.html#aa0fae5d75b7a3a5189668f72209471ae" title=" " alt="" coords="783,93,977,134"/>
+<area shape="rect" id="node10" href="$class_particle.html#a695023810d2182cfcb16df719d99d2bc" title=" " alt="" coords="783,158,977,199"/>
+<area shape="rect" id="node11" href="$class_particle.html#a53c29bd14089e71ccce46f4576f97042" title=" " alt="" coords="783,223,977,265"/>
+</map>

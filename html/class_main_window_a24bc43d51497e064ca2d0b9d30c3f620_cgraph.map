@@ -1,0 +1,10 @@
+<map id="MainWindow::on_InerciaBox1_valueChanged" name="MainWindow::on_InerciaBox1_valueChanged">
+<area shape="rect" id="node1" title=" " alt="" coords="5,53,200,94"/>
+<area shape="rect" id="node2" href="$class_main_window.html#a96b7dddd7b464158713ad4eef44ced45" title=" " alt="" coords="248,23,449,65"/>
+<area shape="rect" id="node8" href="$class_main_program.html#a51a6b31547da0d34366a10c5526f7dcc" title=" " alt="" coords="263,89,434,116"/>
+<area shape="rect" id="node3" href="$class_main_program.html#a4fa7f9ae2b465abba36113e1fcb24627" title=" " alt="" coords="497,5,692,32"/>
+<area shape="rect" id="node6" href="$class_main_program.html#a35abbf9673d41c894b0be57ef5587eff" title=" " alt="" coords="504,56,685,83"/>
+<area shape="rect" id="node4" href="$class_main_program.html#a4848abd74254c660aa01b9600f1a7f88" title=" " alt="" coords="753,5,919,32"/>
+<area shape="rect" id="node5" href="$class_particle.html#a5d19a63f6f278a4610445c00283dfc23" title=" " alt="" coords="980,5,1129,32"/>
+<area shape="rect" id="node7" href="$class_particle.html#a1be9f95239114df070d23b32785cb6c0" title=" " alt="" coords="740,56,932,83"/>
+</map>
