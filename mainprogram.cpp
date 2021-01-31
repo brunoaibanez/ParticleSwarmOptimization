@@ -113,6 +113,7 @@ void MainProgram::setPixmap(){
     QPixmap* mappingPixmap = new QPixmap(WindowConstants::WIDTH, WindowConstants::HEIGHT);
     std::vector<std::vector<float>> mappingMatrix;
     float maxValue = 0;
+    MainProgram::minValue = INFINITY;
 
     for (int i = 0; i < WindowConstants::WIDTH; i++){
         std::vector<float> aux;
@@ -129,6 +130,10 @@ void MainProgram::setPixmap(){
 
             if (value > maxValue){
                 maxValue = value;
+            }
+            if(value < MainProgram::minValue){
+                MainProgram::minValue = value;
+                MainProgram::minValuePosition = QPoint(i,j);
             }
         }
     }
@@ -150,9 +155,14 @@ void MainProgram::setPixmap(){
         }
     }
 
+    QPen linepen(QColor(0,0,255,200));
+    linepen.setCapStyle(Qt::RoundCap);
+    linepen.setWidth(10);
+    painter->setPen(linepen);
+    painter->drawPoint(MainProgram::minValuePosition);
+
 
     this->qpixMap = mappingPixmap;
-
     delete painter;
 
 }

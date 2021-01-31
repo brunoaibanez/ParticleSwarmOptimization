@@ -189,9 +189,9 @@
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>310</y>
+      <y>260</y>
       <width>111</width>
-      <height>80</height>
+      <height>91</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -209,6 +209,13 @@
       <widget class="QRadioButton" name="deJongButton2">
        <property name="text">
         <string>De Jong 2</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="RosenbrockButton">
+       <property name="text">
+        <string>Rosenbrock</string>
        </property>
       </widget>
      </item>

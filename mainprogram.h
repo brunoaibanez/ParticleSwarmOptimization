@@ -24,6 +24,8 @@ public:
     std::vector <Particle *> particles;
     std::vector <Particle *> particlesFirstIteration;
     QPixmap * qpixMap;
+    float minValue;
+    QPoint minValuePosition;
 
 };
 

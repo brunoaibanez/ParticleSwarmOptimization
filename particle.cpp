@@ -31,9 +31,6 @@ Particle::Particle(int x, int y, int vx, int vy)
 void Particle::updatePosition(){
     this->qpointnext = this->qpoint + this->qvelocity;
 
-    std::cout << "x anterior: " << this->qpoint.x() << std::endl;
-    std::cout << "x next: " <<this->qpointnext.x() << std::endl;
-
     if (this->qpointnext.x() > WindowConstants::WIDTH/2){
         this->qpointnext.setX(WindowConstants::WIDTH/2);
     }else if (this->qpointnext.x() < - WindowConstants::WIDTH/2){
@@ -60,7 +57,7 @@ void Particle::setOptimizationValue(){
 
 
 float Particle::getOptimizationValue(){
-    float res;
+    double res;
     if (Particle::optimizationFunction == StringConstants::deJongFunction1){
         res = this->optimizationFunctionDeJong1();
     }
@@ -70,6 +67,9 @@ float Particle::getOptimizationValue(){
     else if (Particle::optimizationFunction == StringConstants::rastriginFunction6){
         res = this->optimizationFunctionRastrigin6();
     }
+    else if (Particle::optimizationFunction == StringConstants::rosenbrockFunction){
+        res = this->optimizationFunctionRosenbrock();
+    }
     else{
         res = 10000;
     }
@@ -77,32 +77,51 @@ float Particle::getOptimizationValue(){
     return res;
 }
 
-float Particle::optimizationFunctionDeJong1(){
-    float x = 5.12 * this->qpoint.x() / (WindowConstants::WIDTH/2);
-    float y = 5.12 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
+double Particle::optimizationFunctionDeJong1(){
+    double x = 5.12 * this->qpoint.x() / (WindowConstants::WIDTH/2);
+    double y = 5.12 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
 
-    float res = pow(x,2) + pow(y,2);
-
-    return res;
-}
-
-float Particle::optimizationFunctionDeJong2(){
-    float x = 5.12 * this->qpoint.x() / (WindowConstants::WIDTH/2);
-    float y = 5.12 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
-
-    float res = 1*pow(x,2) + 2*pow(y,2);
+    double res = pow(x,2) + pow(y,2);
 
     return res;
 }
 
-float Particle::optimizationFunctionRastrigin6(){
-    float x = 3.5 * this->qpoint.x() / (WindowConstants::WIDTH/2);
-    float y = 3.5 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
+double Particle::optimizationFunctionDeJong2(){
+    double x = 5.12 * this->qpoint.x() / (WindowConstants::WIDTH/2);
+    double y = 5.12 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
 
-    float res = 10*2 + pow(x,2) + pow(y,2) - 10*cos(2*PI*x) - 10*cos(2*PI*y);
+    double res = 1*pow(x,2) + 2*pow(y,2);
 
     return res;
 }
+
+double Particle::optimizationFunctionRastrigin6(){
+    double x = 3.5 * this->qpoint.x() / (WindowConstants::WIDTH/2);
+    double y = 3.5 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
+
+    double res = 10*2 + pow(x,2) + pow(y,2) - 10*cos(2*PI*x) - 10*cos(2*PI*y);
+
+    return res;
+}
+
+double Particle::optimizationFunctionRosenbrock(){
+    double x = 2.0 * this->qpoint.x() / (WindowConstants::WIDTH/2);
+    double y = 3.0 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
+
+    double res = pow(1-x,2) + 100*pow((y-pow(x,2)),2);
+
+    return res;
+}
+
+/*
+float Particle::optimizationFunctionGriewank(){
+    double x = 2.0 * this->qpoint.x() / (WindowConstants::WIDTH/2);
+    double y = 3.0 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
+
+    double res = pow(1-x,2) + 100*pow((y-pow(x,2)),2);
+
+    return res;
+}*/
 
 void Particle::recomputeVelocity(){
    float r1 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
@@ -133,12 +152,8 @@ void Particle::checkIfBestLocalPos(){
 
 QPoint Particle::getPrintPoint(){
 
-    std::cout << "X on print from qpoint: " << this->qpoint.x() << std::endl;
-    std::cout << "Y on print from qpoint: " << this->qpoint.y() << std::endl;
     int x = this->qpoint.x() + WindowConstants::WIDTH/2;
     int y = this->qpoint.y() + WindowConstants::HEIGHT/2;
-    std::cout << "X: " << x << std::endl;
-    std::cout << "Y: " << y << std::endl;
 
     QPoint qprintpoint = QPoint(x,y);
     return qprintpoint;

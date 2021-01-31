@@ -15,9 +15,10 @@ public:
     void checkIfBestGlobalPos();
     void checkIfBestLocalPos();
 
-    float optimizationFunctionDeJong1();
-    float optimizationFunctionDeJong2();
-    float optimizationFunctionRastrigin6();
+    double optimizationFunctionDeJong1();
+    double optimizationFunctionDeJong2();
+    double optimizationFunctionRastrigin6();
+    double optimizationFunctionRosenbrock();
 
     float getOptimizationValue();
     void setOptimizationValue();
@@ -30,8 +31,8 @@ public:
     QPoint qvelocity, qvelocitynext;
     float inerciaVelocity;
     QPoint bestLocalPos;
-    float bestLocalRes;
-    float localRes;
+    double bestLocalRes;
+    double localRes;
 
     static std::string optimizationFunction;
     static QPoint bestGlobalPos;

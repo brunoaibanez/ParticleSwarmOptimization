@@ -47,6 +47,8 @@ private slots:
 
     void on_InercialWeightBox_valueChanged(double arg1);
 
+    void on_RosenbrockButton_toggled(bool checked);
+
 private:
     Ui::MainWindow *ui;
 };

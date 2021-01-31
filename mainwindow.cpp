@@ -128,6 +128,18 @@ void MainWindow::on_RastriginButton6_toggled(bool checked)
 
 }
 
+
+void MainWindow::on_RosenbrockButton_toggled(bool checked)
+{
+    if (checked){
+        this->mainProgram.setOptimizationFunction(StringConstants::rosenbrockFunction);
+        this->mainProgram.setPixmap();
+        this->on_restartButton_clicked();
+        this->changeFunctionLabel(":/r.png");
+    }
+}
+
+
 void MainWindow::on_InerciaBox1_valueChanged(double arg1)
 {
     this->mainProgram.setInercia1(arg1);
