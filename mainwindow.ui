@@ -89,7 +89,10 @@
         <number>1</number>
        </property>
        <property name="maximum">
-        <number>100</number>
+        <number>1000</number>
+       </property>
+       <property name="value">
+        <number>500</number>
        </property>
       </widget>
      </item>
@@ -191,7 +194,7 @@
       <x>640</x>
       <y>260</y>
       <width>111</width>
-      <height>91</height>
+      <height>115</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -223,6 +226,20 @@
       <widget class="QRadioButton" name="RastriginButton6">
        <property name="text">
         <string>Rastrigin 6</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="SchafferButton">
+       <property name="text">
+        <string>Schaffer</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="GriewankButton">
+       <property name="text">
+        <string>Griewank</string>
        </property>
       </widget>
      </item>

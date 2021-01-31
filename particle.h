@@ -19,6 +19,8 @@ public:
     double optimizationFunctionDeJong2();
     double optimizationFunctionRastrigin6();
     double optimizationFunctionRosenbrock();
+    double optimizationFunctionGriewank();
+    double optimizationFunctionSchaffer();
 
     float getOptimizationValue();
     void setOptimizationValue();

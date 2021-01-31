@@ -139,6 +139,27 @@ void MainWindow::on_RosenbrockButton_toggled(bool checked)
     }
 }
 
+void MainWindow::on_SchafferButton_toggled(bool checked)
+{
+    if (checked){
+        this->mainProgram.setOptimizationFunction(StringConstants::schafferFunction);
+        this->mainProgram.setPixmap();
+        this->on_restartButton_clicked();
+        this->changeFunctionLabel(":/r.png");
+    }
+}
+
+void MainWindow::on_GriewankButton_toggled(bool checked)
+{
+    if (checked){
+        this->mainProgram.setOptimizationFunction(StringConstants::griewankFunction);
+        this->mainProgram.setPixmap();
+        this->on_restartButton_clicked();
+        this->changeFunctionLabel(":/j2.png");
+    }
+}
+
+
 
 void MainWindow::on_InerciaBox1_valueChanged(double arg1)
 {
@@ -157,3 +178,4 @@ void MainWindow::on_InercialWeightBox_valueChanged(double arg1)
     this->mainProgram.setInercialWeight(arg1);
     this->on_restartButton_clicked();
 }
+

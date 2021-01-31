@@ -49,6 +49,10 @@ private slots:
 
     void on_RosenbrockButton_toggled(bool checked);
 
+    void on_SchafferButton_toggled(bool checked);
+
+    void on_GriewankButton_toggled(bool checked);
+
 private:
     Ui::MainWindow *ui;
 };

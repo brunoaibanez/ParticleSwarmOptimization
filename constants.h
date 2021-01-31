@@ -16,7 +16,8 @@ namespace StringConstants
     const std::string deJongFunction2 = "DeJongFunction2";
     const std::string rastriginFunction6 = "RastriginFunction6";
     const std::string rosenbrockFunction = "RosenbrockFunction";
-
+    const std::string griewankFunction = "GriewankFunction";
+    const std::string schafferFunction = "SchafferFunction";
 }
 
 namespace ModelDefaultConstants

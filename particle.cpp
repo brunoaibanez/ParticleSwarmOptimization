@@ -70,6 +70,12 @@ float Particle::getOptimizationValue(){
     else if (Particle::optimizationFunction == StringConstants::rosenbrockFunction){
         res = this->optimizationFunctionRosenbrock();
     }
+    else if (Particle::optimizationFunction == StringConstants::griewankFunction){
+        res = this->optimizationFunctionGriewank();
+    }
+    else if (Particle::optimizationFunction == StringConstants::schafferFunction){
+        res = this->optimizationFunctionSchaffer();
+    }
     else{
         res = 10000;
     }
@@ -113,15 +119,26 @@ double Particle::optimizationFunctionRosenbrock(){
     return res;
 }
 
-/*
-float Particle::optimizationFunctionGriewank(){
-    double x = 2.0 * this->qpoint.x() / (WindowConstants::WIDTH/2);
-    double y = 3.0 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
+double Particle::optimizationFunctionGriewank(){
+    double x = 600.0 * this->qpoint.x() / (WindowConstants::WIDTH/2);
+    double y = 600.0 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
+    double res = (pow(x,2) + pow(y,2))/ 10000 - cos(x/1) - cos(y/sqrt(2.0)) + 2;
 
-    double res = pow(1-x,2) + 100*pow((y-pow(x,2)),2);
+    if (res < 0){
+        std::cout << "error" << std::endl;
+    }
 
     return res;
-}*/
+}
+
+double Particle::optimizationFunctionSchaffer(){
+    double x = 100.0 * this->qpoint.x() / (WindowConstants::WIDTH/2);
+    double y = 100.0 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
+
+    double res = 0.5 - (pow(sin(sqrt(pow(x,2)+pow(y,2))),2)-0.5) / pow(1+0.001*(pow(x,2)+pow(y,2)),2) ;
+
+    return res;
+}
 
 void Particle::recomputeVelocity(){
    float r1 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
@@ -166,6 +183,7 @@ void Particle::clearGlobalVariables(){
 
 
 void Particle::setOptimizationFunction(std::string function){
+    std::cout << function << std::endl;
     Particle::optimizationFunction = function;
 }
 
