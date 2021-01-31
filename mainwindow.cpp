@@ -90,6 +90,17 @@ void MainWindow::on_numberOfParticles_valueChanged(int arg1)
 
 }
 
+void MainWindow::on_MaxVelocity_valueChanged(double arg1)
+{
+    if(started){
+        this->mytimer->stop();
+        started = false;
+    }
+
+    this->on_restartButton_clicked();
+}
+
+
 void MainWindow::on_deJongButton1_toggled(bool checked)
 {
     if (checked){
@@ -178,4 +189,5 @@ void MainWindow::on_InercialWeightBox_valueChanged(double arg1)
     this->mainProgram.setInercialWeight(arg1);
     this->on_restartButton_clicked();
 }
+
 

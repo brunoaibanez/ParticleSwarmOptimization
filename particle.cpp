@@ -9,6 +9,7 @@ float Particle::bestGlobalRes = ModelDefaultConstants::defaultBestGlobalRes;
 float Particle::inercia1 = ModelDefaultConstants::defaultInercia1;
 float Particle::inercia2 = ModelDefaultConstants::defaultInercia2;
 float Particle::inercialWeight = ModelDefaultConstants::defaultInercialWeight;
+float Particle::maxVelocity = ModelDefaultConstants::defaultMaxVelocity;
 
 
 Particle::Particle(int x, int y, int vx, int vy)
@@ -122,11 +123,8 @@ double Particle::optimizationFunctionRosenbrock(){
 double Particle::optimizationFunctionGriewank(){
     double x = 600.0 * this->qpoint.x() / (WindowConstants::WIDTH/2);
     double y = 600.0 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
-    double res = (pow(x,2) + pow(y,2))/ 10000 - cos(x/1) - cos(y/sqrt(2.0)) + 2;
 
-    if (res < 0){
-        std::cout << "error" << std::endl;
-    }
+    double res = (pow(x,2) + pow(y,2))/ 100000 - cos(x/1) * cos(y/sqrt(2.0)) + 1;
 
     return res;
 }
@@ -146,8 +144,8 @@ void Particle::recomputeVelocity(){
 
    this->qvelocitynext = this->inerciaVelocity * this->qvelocity + Particle::inercia1 * r1 * (this->bestLocalPos - this->qpoint) + Particle::inercia2 * r2 * (this->bestGlobalPos - this->qpoint);
    float norm = sqrt(pow(this->qvelocitynext.x(), 2) + pow(this->qvelocitynext.y(), 2));
-   if (norm > MaxValues::maxVelocity){
-       this->qvelocitynext = this->qvelocitynext * MaxValues::maxVelocity / norm;
+   if (norm > this->maxVelocity){
+       this->qvelocitynext = this->qvelocitynext * this->maxVelocity / norm;
    }
    this->inerciaVelocity = this->inerciaVelocity * Particle::inercialWeight;
 }

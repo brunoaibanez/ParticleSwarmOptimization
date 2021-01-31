@@ -53,6 +53,8 @@ private slots:
 
     void on_GriewankButton_toggled(bool checked);
 
+    void on_MaxVelocity_valueChanged(double arg1);
+
 private:
     Ui::MainWindow *ui;
 };

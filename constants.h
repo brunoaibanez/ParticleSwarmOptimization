@@ -26,12 +26,11 @@ namespace ModelDefaultConstants
     const float defaultInercia1 = 0.1;
     const float defaultInercia2 = 0.1;
     const float defaultInercialWeight = 0.9;
+    const float defaultMaxVelocity = 30;
 
 }
 
-namespace MaxValues{
-    const int maxVelocity = 30;
-}
+
 
 class Constants
 {

@@ -22,8 +22,8 @@ void MainProgram::setNumberOfParticles(int numberOfParticles){
         int x = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * WindowConstants::WIDTH - WindowConstants::WIDTH/2) ;
         int y = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * WindowConstants::HEIGHT - WindowConstants::HEIGHT/2) ;
 
-        int vx = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * MaxValues::maxVelocity) ;
-        int vy = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * MaxValues::maxVelocity) ;
+        int vx = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * Particle::maxVelocity) ;
+        int vy = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * Particle::maxVelocity) ;
 
 
         Particle* p = new Particle(x,y, vx, vy);

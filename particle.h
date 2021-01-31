@@ -42,6 +42,7 @@ public:
     static float inercia1;
     static float inercia2;
     static float inercialWeight;
+    static float maxVelocity;
 
 };
 
