@@ -131,6 +131,7 @@ void MainProgram::setPixmap(){
             if (value > maxValue){
                 maxValue = value;
             }
+
             if(value < MainProgram::minValue){
                 MainProgram::minValue = value;
                 MainProgram::minValuePosition = QPoint(i,j);

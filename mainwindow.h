@@ -21,6 +21,7 @@ public:
     void showParticles();
     QTimer * mytimer;
     bool started;
+    int numberIterations;
 
 private slots:
 

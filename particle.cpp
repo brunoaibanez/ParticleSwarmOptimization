@@ -121,10 +121,10 @@ double Particle::optimizationFunctionRosenbrock(){
 }
 
 double Particle::optimizationFunctionGriewank(){
-    double x = 600.0 * this->qpoint.x() / (WindowConstants::WIDTH/2);
-    double y = 600.0 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
+    double x = 50.0 * this->qpoint.x() / (WindowConstants::WIDTH/2);
+    double y = 50.0 * this->qpoint.y() / (WindowConstants::HEIGHT/2);
 
-    double res = (pow(x,2) + pow(y,2))/ 100000 - cos(x/1) * cos(y/sqrt(2.0)) + 1;
+    double res = (pow(x,2) + pow(y,2))/ 1000 - cos(x/1) * cos(y/sqrt(2.0)) + 1;
 
     return res;
 }
@@ -139,8 +139,10 @@ double Particle::optimizationFunctionSchaffer(){
 }
 
 void Particle::recomputeVelocity(){
-   float r1 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-   float r2 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+   //float r1 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX); //Uncomment one of the two to get the deterministic algorithm
+   //float r2 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+   float r1 = 0.5;
+   float r2 = 0.5;
 
    this->qvelocitynext = this->inerciaVelocity * this->qvelocity + Particle::inercia1 * r1 * (this->bestLocalPos - this->qpoint) + Particle::inercia2 * r2 * (this->bestGlobalPos - this->qpoint);
    float norm = sqrt(pow(this->qvelocitynext.x(), 2) + pow(this->qvelocitynext.y(), 2));

@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
     this->mainProgram = MainProgram();
     this->mainProgram.setNumberOfParticles(ui->numberOfParticles->value());
 
+    numberIterations = 0;
+
     QPixmap q = this->mainProgram.refreshWindow();
     ui->labelGrid->setPixmap(q);
 
@@ -49,9 +51,20 @@ void MainWindow::on_startButton_clicked()
     QPixmap q = this->mainProgram.refreshWindow();
     ui->labelGrid->setPixmap(q);
 
+
+    numberIterations++;
+
+    if (numberIterations % 50 == 0 ){
+        std::cout << numberIterations << std::endl;
+    }
+
     if (!this->started){
         this->mytimer->start(50);
         started = true;
+    }
+
+    if(numberIterations == 400){
+        this->on_stopButton_clicked();
     }
 }
 
@@ -70,6 +83,7 @@ void MainWindow::on_restartButton_clicked()
         this->mytimer->stop();
         started = false;
     }
+    numberIterations = 0;
     this->mainProgram.restartPoints();
 
     QPixmap q = this->mainProgram.refreshWindow();
@@ -81,6 +95,7 @@ void MainWindow::on_numberOfParticles_valueChanged(int arg1)
     if(started){
         this->mytimer->stop();
         started = false;
+        numberIterations = 0;
     }
 
     this->mainProgram.setNumberOfParticles(arg1);
