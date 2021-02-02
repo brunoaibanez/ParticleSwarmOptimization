@@ -1,6 +1,7 @@
 #include "mainprogram.h"
 #include "constants.h"
 #include <iostream>
+#include <fstream>
 #include <cmath>
 
 
@@ -9,6 +10,9 @@ MainProgram::MainProgram()
 
     this->setPixmap();
 
+    this->distances_to_minimum = std::vector<float>();
+    this->norms_of_velocity = std::vector<float>();
+    iterationMinimumSeen = -1;
 
 }
 
@@ -134,7 +138,7 @@ void MainProgram::setPixmap(){
 
             if(value < MainProgram::minValue){
                 MainProgram::minValue = value;
-                MainProgram::minValuePosition = QPoint(i,j);
+                MainProgram::minValuePosition = QPoint(posx,posy);
             }
         }
     }
@@ -160,7 +164,7 @@ void MainProgram::setPixmap(){
     linepen.setCapStyle(Qt::RoundCap);
     linepen.setWidth(10);
     painter->setPen(linepen);
-    painter->drawPoint(MainProgram::minValuePosition);
+    painter->drawPoint(QPoint(this->minValuePosition.x()+WindowConstants::WIDTH/2,this->minValuePosition.y()+WindowConstants::HEIGHT/2));
 
 
     this->qpixMap = mappingPixmap;
@@ -181,4 +185,76 @@ void MainProgram::setInercia2(float value){
 
 void MainProgram::setInercialWeight(float value){
     Particle::inercialWeight = value;
+}
+
+void MainProgram::evaluateVelocity(){
+
+    float median_norms = 0.0;
+    for(int i = 0; i < this->particles.size(); i++){
+        QPoint qvelocity = this->particles.at(i)->qvelocity;
+
+        float norm = sqrt(pow(qvelocity.x(), 2) + pow(qvelocity.y(), 2));
+
+        median_norms = median_norms + norm;
+
+    }
+
+    median_norms = median_norms / float(this->particles.size());
+
+    this->norms_of_velocity.push_back(median_norms);
+
+}
+
+void MainProgram::evaluateDistanceToOptimum(){
+
+    float median_distances = 0.0;
+
+    for(int i = 0; i < this->particles.size(); i++){
+        QPoint qpoint = this->particles.at(i)->qpoint;
+        QPoint qdistance = qpoint - this->minValuePosition;
+        float distance = sqrt(pow(qdistance.x(), 2) + pow(qdistance.y(), 2));
+
+        median_distances = median_distances + distance;
+
+    }
+
+    median_distances = median_distances / float(this->particles.size());
+
+    this->distances_to_minimum.push_back(median_distances);
+
+}
+
+
+void MainProgram::checkIfOptimumSeen(int iteration){
+
+    bool itsSeen = (Particle::bestGlobalPos.x() == this->minValuePosition.x() and Particle::bestGlobalPos.y() == this->minValuePosition.y());
+
+    if (itsSeen and iterationMinimumSeen == -1){
+        iterationMinimumSeen = iteration;
+    }
+    //return (Particle::bestGlobalPos.x() == this->minValuePosition.x() and Particle::bestGlobalPos.y() == this->minValuePosition.y())
+}
+
+void MainProgram::analysisAlgorithm(int iteration){
+    this->evaluateDistanceToOptimum();
+    this->evaluateVelocity();
+    this->checkIfOptimumSeen(iteration);
+
+    if(iteration == 399){
+    //TODO Has to print file
+
+        std::cout << "Has finished" << std::endl;
+        std::cout << this->distances_to_minimum.size() << std::endl;
+        std::cout << this->norms_of_velocity.size() << std::endl;
+        std::cout << iterationMinimumSeen << std::endl;
+
+        std::cout << Particle::bestGlobalPos.x() << std::endl;
+        std::cout << this->minValuePosition.x() << std::endl;
+    }
+}
+
+void MainProgram::clearAnalysisVectors(){
+    this->distances_to_minimum.clear();
+    this->norms_of_velocity.clear();
+    iterationMinimumSeen = -1;
 }
