@@ -22,7 +22,6 @@ public:
     QTimer * mytimer;
     bool started;
     int numberIterations;
-    int iterationMinimumSeen;
 
 private slots:
 

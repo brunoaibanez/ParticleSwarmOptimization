@@ -51,6 +51,9 @@ void MainWindow::on_startButton_clicked()
     QPixmap q = this->mainProgram.refreshWindow();
     ui->labelGrid->setPixmap(q);
 
+
+    numberIterations++;
+
     if (numberIterations % 50 == 0 ){
         std::cout << numberIterations << std::endl;
     }
@@ -60,12 +63,9 @@ void MainWindow::on_startButton_clicked()
         started = true;
     }
 
-    this->mainProgram.analysisAlgorithm(numberIterations);
-    numberIterations++;
     if(numberIterations == 400){
         this->on_stopButton_clicked();
     }
-
 }
 
 void MainWindow::on_stopButton_clicked()
@@ -84,12 +84,10 @@ void MainWindow::on_restartButton_clicked()
         started = false;
     }
     numberIterations = 0;
-    this->mainProgram.clearAnalysisVectors();
     this->mainProgram.restartPoints();
 
     QPixmap q = this->mainProgram.refreshWindow();
     ui->labelGrid->setPixmap(q);
-
 }
 
 void MainWindow::on_numberOfParticles_valueChanged(int arg1)
