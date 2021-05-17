@@ -19,19 +19,10 @@ public:
     MainProgram mainProgram;
     void setMainProgram(MainProgram * m);
     void showParticles();
-
-    void analysis_particles();
-    void analysis_max_velocity();
-    void analysis_ind_intertia();
-    void analysis_glob_inertia();
-    void analysis_momentum();
     QTimer * mytimer;
     bool started;
     int numberIterations;
     int iterationMinimumSeen;
-
-    static int numberMaxOfIterations;
-
 
 private slots:
 
@@ -44,6 +35,7 @@ private slots:
     void on_restartButton_clicked();
 
     void on_numberOfParticles_valueChanged(int arg1);
+
 
     void on_deJongButton1_toggled(bool checked);
 
@@ -64,10 +56,6 @@ private slots:
     void on_GriewankButton_toggled(bool checked);
 
     void on_MaxVelocity_valueChanged(double arg1);
-
-    void on_spinBox_valueChanged(int arg1);
-
-    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

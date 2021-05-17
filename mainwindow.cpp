@@ -4,10 +4,7 @@
 #include <iostream>
 #include "mainprogram.h"
 #include <QTimer>
-#include <unistd.h>
-#include <thread>         // std::thread
 
-int MainWindow::numberMaxOfIterations = ModelDefaultConstants::defaultNumMaxIterations;
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -29,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     QTimer *timer = new QTimer(this);
     this->mytimer = timer;
-    //connect(timer, SIGNAL(timeout()), this, SLOT(show_particles()));
+    connect(timer, SIGNAL(timeout()), this, SLOT(on_startButton_clicked()));
 
 
 }
@@ -39,184 +36,6 @@ MainWindow::~MainWindow()
 
 
     delete ui;
-}
-
-void MainWindow::analysis_particles(){
-
-    std::cout << "aqui" << std::endl;
-    // Create an empty vector
-    std::vector<std::string> vect = std::vector<std::string> ();
-
-    vect.push_back(StringConstants::deJongFunction1);
-    vect.push_back(StringConstants::deJongFunction2);
-    vect.push_back(StringConstants::griewankFunction);
-    vect.push_back(StringConstants::rastriginFunction6);
-    vect.push_back(StringConstants::schafferFunction);
-    vect.push_back(StringConstants::rosenbrockFunction);
-
-    std::cout << "aqui" << std::endl;
-    for(int i = 0; i < vect.size(); i++){
-         std::cout << "aca" << std::endl;
-        this->mainProgram.setOptimizationFunction(vect.at(i));
-        this->mainProgram.setPixmap();
-        this->on_restartButton_clicked();
-
-         usleep(1000000);
-
-        for (int j = 0; j < 11; j++){
-             std::cout << "oco" << std::endl;
-            if (j==0){
-                this->on_numberOfParticles_valueChanged(1);
-            }
-            else{
-                this->on_numberOfParticles_valueChanged(j*10);
-            }
-
-            this->on_startButton_clicked();
-
-            while(numberIterations != MainWindow::numberMaxOfIterations){
-                usleep(10000);
-                this->on_startButton_clicked();
-            }
-            this->on_restartButton_clicked();
-            numberIterations = 0;
-
-
-        }
-    }
-}
-
-void MainWindow::analysis_max_velocity(){
-
-    std::cout << "aqui" << std::endl;
-    // Create an empty vector
-    std::vector<std::string> vect = std::vector<std::string> ();
-
-    vect.push_back(StringConstants::deJongFunction1);
-    vect.push_back(StringConstants::deJongFunction2);
-    vect.push_back(StringConstants::griewankFunction);
-    vect.push_back(StringConstants::rastriginFunction6);
-    vect.push_back(StringConstants::schafferFunction);
-    vect.push_back(StringConstants::rosenbrockFunction);
-
-    std::cout << "aqui" << std::endl;
-    for(int i = 0; i < vect.size(); i++){
-         std::cout << "aca" << std::endl;
-        this->mainProgram.setOptimizationFunction(vect.at(i));
-        this->mainProgram.setPixmap();
-        this->on_restartButton_clicked();
-
-         usleep(10000);
-
-        for (int j = 0; j < 5; j++){
-             std::cout << "oco" << std::endl;
-            if (j==0){
-                this->on_MaxVelocity_valueChanged(1);
-            }
-            else{
-                this->on_MaxVelocity_valueChanged(j*10);
-            }
-            this->on_numberOfParticles_valueChanged(100);
-
-            this->on_startButton_clicked();
-
-            while(numberIterations != MainWindow::numberMaxOfIterations){
-                usleep(10000);
-                this->on_startButton_clicked();
-            }
-            this->on_restartButton_clicked();
-            numberIterations = 0;
-
-
-        }
-    }
-}
-
-void MainWindow::analysis_glob_inertia(){
-
-    std::cout << "aqui" << std::endl;
-    // Create an empty vector
-    std::vector<std::string> vect = std::vector<std::string> ();
-
-    vect.push_back(StringConstants::deJongFunction1);
-    vect.push_back(StringConstants::deJongFunction2);
-    vect.push_back(StringConstants::griewankFunction);
-    vect.push_back(StringConstants::rastriginFunction6);
-    vect.push_back(StringConstants::schafferFunction);
-    vect.push_back(StringConstants::rosenbrockFunction);
-
-    std::cout << "aqui" << std::endl;
-    for(int i = 0; i < vect.size(); i++){
-         std::cout << "aca" << std::endl;
-        this->mainProgram.setOptimizationFunction(vect.at(i));
-        this->mainProgram.setPixmap();
-        this->on_restartButton_clicked();
-
-         usleep(10000);
-
-        for (int j = 0; j < 5; j++){
-             std::cout << "oco" << std::endl;
-            if (j==0){
-                this->on_InerciaBox2_valueChanged(0);
-            }
-            else{
-                this->on_InerciaBox2_valueChanged(j*0.25);
-            }
-
-            this->on_startButton_clicked();
-
-            while(numberIterations != MainWindow::numberMaxOfIterations){
-                usleep(10000);
-                this->on_startButton_clicked();
-            }
-            this->on_restartButton_clicked();
-            numberIterations = 0;
-        }
-    }
-}
-
-
-void MainWindow::analysis_ind_intertia(){
-
-    std::cout << "aqui" << std::endl;
-    // Create an empty vector
-    std::vector<std::string> vect = std::vector<std::string> ();
-
-    vect.push_back(StringConstants::deJongFunction1);
-    vect.push_back(StringConstants::deJongFunction2);
-    vect.push_back(StringConstants::griewankFunction);
-    vect.push_back(StringConstants::rastriginFunction6);
-    vect.push_back(StringConstants::schafferFunction);
-    vect.push_back(StringConstants::rosenbrockFunction);
-
-    std::cout << "aqui" << std::endl;
-    for(int i = 0; i < vect.size(); i++){
-         std::cout << "aca" << std::endl;
-        this->mainProgram.setOptimizationFunction(vect.at(i));
-        this->mainProgram.setPixmap();
-        this->on_restartButton_clicked();
-
-         usleep(10000);
-
-        for (int j = 0; j < 5; j++){
-             std::cout << "oco" << std::endl;
-            if (j==0){
-                this->on_InerciaBox1_valueChanged(0);
-            }
-            else{
-                this->on_InerciaBox1_valueChanged(j*0.25);
-            }
-
-            this->on_startButton_clicked();
-
-            while(numberIterations != MainWindow::numberMaxOfIterations){
-                usleep(10000);
-                this->on_startButton_clicked();
-            }
-            this->on_restartButton_clicked();
-            numberIterations = 0;
-        }
-    }
 }
 
 
@@ -243,7 +62,7 @@ void MainWindow::on_startButton_clicked()
 
     this->mainProgram.analysisAlgorithm(numberIterations);
     numberIterations++;
-    if(numberIterations == MainWindow::numberMaxOfIterations){
+    if(numberIterations == 400){
         this->on_stopButton_clicked();
     }
 
@@ -285,7 +104,6 @@ void MainWindow::on_numberOfParticles_valueChanged(int arg1)
 
     QPixmap q = this->mainProgram.refreshWindow();
     ui->labelGrid->setPixmap(q);
-    this->on_restartButton_clicked();
 
 }
 
@@ -295,8 +113,6 @@ void MainWindow::on_MaxVelocity_valueChanged(double arg1)
         this->mytimer->stop();
         started = false;
     }
-
-    Particle::maxVelocity = arg1;
 
     this->on_restartButton_clicked();
 }
@@ -371,6 +187,8 @@ void MainWindow::on_GriewankButton_toggled(bool checked)
     }
 }
 
+
+
 void MainWindow::on_InerciaBox1_valueChanged(double arg1)
 {
     this->mainProgram.setInercia1(arg1);
@@ -389,14 +207,4 @@ void MainWindow::on_InercialWeightBox_valueChanged(double arg1)
     this->on_restartButton_clicked();
 }
 
-void MainWindow::on_spinBox_valueChanged(int arg1)
-{
-    this->numberMaxOfIterations = arg1;
-    MainProgram::numberMaxOfIterations = arg1;
-    this->on_restartButton_clicked();
-}
 
-void MainWindow::on_pushButton_clicked()
-{
-    this->analysis_ind_intertia();
-}
