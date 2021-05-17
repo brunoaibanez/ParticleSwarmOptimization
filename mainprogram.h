@@ -34,6 +34,7 @@ public:
     float minValue;
     QPoint minValuePosition;
     int iterationMinimumSeen;
+   static int numberMaxOfIterations;
 
 };
 

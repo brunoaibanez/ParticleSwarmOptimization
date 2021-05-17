@@ -23,10 +23,11 @@ namespace StringConstants
 namespace ModelDefaultConstants
 {
     const float defaultBestGlobalRes = 1;
-    const float defaultInercia1 = 0.1;
-    const float defaultInercia2 = 0.1;
+    const float defaultInercia1 = 0.5;
+    const float defaultInercia2 = 0.5;
     const float defaultInercialWeight = 0.9;
-    const float defaultMaxVelocity = 30;
+    const float defaultMaxVelocity = 50;
+    const float defaultNumMaxIterations = 200;
 
 }
 

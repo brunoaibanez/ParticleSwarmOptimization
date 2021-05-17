@@ -3,6 +3,9 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <sstream>
+
+int MainProgram::numberMaxOfIterations = ModelDefaultConstants::defaultNumMaxIterations;
 
 
 MainProgram::MainProgram()
@@ -29,9 +32,20 @@ void MainProgram::setNumberOfParticles(int numberOfParticles){
         int vx = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * Particle::maxVelocity) ;
         int vy = int((static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * Particle::maxVelocity) ;
 
+        int sign1 = std::rand() % 2;
+        int sign2 = std::rand() % 2;
 
-        Particle* p = new Particle(x,y, vx, vy);
-        Particle* pcopy = new Particle(x,y, vx, vy);
+        if (sign1 == 0){
+            sign1 = -1;
+        }
+
+        if (sign2 == 0){
+            sign2 = -1;
+
+        }
+
+        Particle* p = new Particle(x,y, sign1*vx, sign2*vy);
+        Particle* pcopy = new Particle(x,y, sign1*vx, sign2*vy);
 
         this->particles.push_back(p);
         this->particlesFirstIteration.push_back(pcopy);
@@ -240,16 +254,59 @@ void MainProgram::analysisAlgorithm(int iteration){
     this->evaluateVelocity();
     this->checkIfOptimumSeen(iteration);
 
-    if(iteration == 399){
+    if(iteration == (MainProgram::numberMaxOfIterations-1)){
     //TODO Has to print file
 
-        std::cout << "Has finished" << std::endl;
-        std::cout << this->distances_to_minimum.size() << std::endl;
-        std::cout << this->norms_of_velocity.size() << std::endl;
-        std::cout << iterationMinimumSeen << std::endl;
+        std::ostringstream ossnorms;
+        std::ostringstream ossdistances;
+        std::ostringstream ossiterations;
 
-        std::cout << Particle::bestGlobalPos.x() << std::endl;
-        std::cout << this->minValuePosition.x() << std::endl;
+        ossnorms << "Norms of velocity,";
+
+        if (!this->norms_of_velocity.empty())
+        {
+          // Convert all but the last element to avoid a trailing ","
+            std::copy(this->norms_of_velocity.begin(), this->norms_of_velocity.end()-1,std::ostream_iterator<int>(ossnorms, ","));
+
+          // Now add the last element with no delimiter
+            ossnorms << this->norms_of_velocity.back();
+        }
+
+        ossdistances << "Distances to minimum,";
+
+        if (!this->distances_to_minimum.empty())
+        {
+          // Convert all but the last element to avoid a trailing ","
+            std::copy(this->distances_to_minimum.begin(), this->distances_to_minimum.end()-1,std::ostream_iterator<int>(ossdistances, ","));
+
+          // Now add the last element with no delimiter
+            ossdistances << this->distances_to_minimum.back();
+        }
+
+        ossiterations << "Iterations,";
+
+        std::vector<int> v(this->numberMaxOfIterations);
+        std::iota(v.begin(), v.end(), 1);
+
+        if (!v.empty())
+        {
+          // Convert all but the last element to avoid a trailing ","
+            std::copy(v.begin(), v.end()-1,std::ostream_iterator<int>(ossiterations, ","));
+
+          // Now add the last element with no delimiter
+            ossiterations << this->distances_to_minimum.back();
+        }
+
+
+
+        std::ofstream myfile;
+        std::string path = "/Users/bruno/Documents/particleSwarmResults/";
+        path = path + "test_indinertia_" + Particle::optimizationFunction + "_" + std::to_string(Particle::inercia1) + ".csv";
+        std::cout << "Printing file on " + path << std::endl;
+        myfile.open (path, std::ios::out | std::ios::app);
+        myfile << ossiterations.str() + "\n" + ossnorms.str() + "\n" + ossdistances.str() + "\n" + "Minimum seen on iteration," + std::to_string(iterationMinimumSeen) + "\n";
+        myfile.close();
+
     }
 }
 
